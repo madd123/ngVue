@@ -2,12 +2,22 @@
 html,body{
     width:100%;
     height: 100%;
+    overflow: hidden;
 }
-body{
+.background{
+    position:fixed;
+    left:-5%;
+    top:-5%;
+    width:110%;
+    height: 110%;
     background: url("../../images/background.jpg") no-repeat 50% 50%;
     background-size: cover;
-    filter: 
+    filter: blur(5px);
+    -moz-filter: blur(5px);
+    -webkit-filter: blur(5px);
+    -ms-filter: blur(5px);  
 }
+
 .main{
     width: 653px;
     height: 513px;
@@ -39,6 +49,47 @@ body{
             margin-top:30px;
             margin-bottom:12px;
             position: relative;
+        }
+    }
+    .user-form{
+        background: rgba(40,43,48,.75);
+        border-radius: 0;
+        min-width: 340px;
+        padding: 30px;
+        width: auto;
+        .reg-title{
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 30px;
+            text-align: center;
+        }
+        .reg-control-group{
+            -webkit-box-flex: 1;
+            flex: 1;
+            label{
+                color: #87909c;
+                display: block;
+                font-size: 11px;
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+            input{
+                background: transparent;
+                border-bottom-color: hsla(0,0%,100%,.1);
+                color: #fff;
+                border: none;
+                border-bottom: 1px solid #f0f0f0;
+                font-size: 16px;
+                font-weight: 400;
+                margin-top: 12px;
+                outline: none;
+                resize: none;
+                width: 100%;
+                line-height: 34px;
+                font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+            }
+            
         }
     }
 }

@@ -15,7 +15,11 @@ router.get('/docs', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-    res.render('login/index', { title: 'Express' });
+    res.render('yc/login', { title: 'Express' });
+});
+
+router.get('/register', function(req, res, next) {
+    res.render('yc/register', { title: 'Express' });
 });
 
 module.exports = router;
