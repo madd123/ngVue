@@ -59,7 +59,7 @@ typings/
 
 
 # idea ignore
-.idea
+.idea/
 
 # vscode ignore
-.vscode
+.vscode/
