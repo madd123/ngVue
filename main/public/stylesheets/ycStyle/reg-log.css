@@ -3,6 +3,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  font-family: Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 .background {
   position: fixed;
@@ -18,8 +19,8 @@ body {
   -ms-filter: blur(5px);
 }
 .main {
-  width: 653px;
-  height: 513px;
+  width: 718px;
+  height: 564px;
   position: absolute;
   display: flex;
   margin: auto auto;
@@ -27,6 +28,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
+  transform: scale(0.9);
 }
 .main .auth-wrap {
   padding: 30px;
@@ -61,23 +63,26 @@ body {
   margin: 0 0 30px;
   text-align: center;
 }
-.main .user-form .reg-control-group {
+.main .user-form .control-group {
   -webkit-box-flex: 1;
   flex: 1;
 }
-.main .user-form .reg-control-group label {
+.main .user-form .control-group + .control-group {
+  margin-top: 18px;
+}
+.main .user-form .control-group label {
   color: #87909c;
   display: block;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
 }
-.main .user-form .reg-control-group input {
+.main .user-form .control-group input {
   background: transparent;
   border-bottom-color: rgba(255, 255, 255, 0.1);
   color: #fff;
   border: none;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #7289da;
   font-size: 16px;
   font-weight: 400;
   margin-top: 12px;
@@ -85,5 +90,45 @@ body {
   resize: none;
   width: 100%;
   line-height: 34px;
+}
+.main .user-form .control-group input:focus {
+  border-bottom-color: #fff;
+}
+.main .user-form .btn {
+  background-color: #7289da;
+  border-radius: 3px;
+  color: #fff;
+  display: inline-block;
+  line-height: 58px;
+  margin: 40px 0 0;
+  padding: 0;
+  text-align: center;
+  border: 0;
+  text-decoration: none;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 2s ease 0s;
+}
+.main .user-form .btn:hover {
+  background-color: #697ec4;
+}
+.main .user-form .divider {
+  background-color: rgba(255, 255, 255, 0.1);
+  height: 1px;
+  margin: 30px 0;
+}
+.main .user-form footer {
   font-family: Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: #87909c;
+  font-size: 12px;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+.main .user-form footer:first-of-type {
+  margin-top: 20px;
+}
+.main .user-form footer a {
+  color: #fff;
+  font-size: inherit;
 }
