@@ -29,10 +29,9 @@ doc.close=function (con) {
   });
 };
 
-doc.addDoc=function (title,content='没有写',cb) {
+doc.addDoc=function (title,cb) {
   var tmp=new Document({
     title:title,
-    content:content
   });
   Document.find({title:title},function (err,result) {
     if(result.length===0){
@@ -49,10 +48,22 @@ doc.addDoc=function (title,content='没有写',cb) {
 };
 
 doc.addPara=function (title,content,cb) {
-  Document.update({title:title},{$push:{ content: content}},function (err,result) {
-    if(err) console.error(err);
-    return cb(0);
-  });
+  content=content.split('#');
+  if(content.length===0){
+    return cb(1);
+  }
+  for(var i=0;i<content.length;i++){
+    JSON.parse(content[i]);
+    if(i===content.length-1){
+      Document.update({title:title},{$push:{ content: content[i]}},function (err,result) {
+        if(result.nModified===0){
+          return cb(1);
+        }
+        return cb(0);
+      });
+    }
+    Document.update({title:title},{$push:{ content: content[i]}});
+  }
 };
 
 doc.getAllDoc=function (cb) {

@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= title %></title>
+    <title>添加文章</title>
     <link rel='stylesheet' href='/stylesheets/docs/wph/index.css' />
-    <script src=""></script>
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <script src="https://cdn.bootcss.com/angular.js/1.4.0/angular.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 </head>
-<body>
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
-<h3>登录</h3>
-<p>
-    <lable>用户名</lable>
-    <input type="text" id="username">
-</p>
-<p>
-    <lable>密码</lable>
-    <input type="text" id="password">
-</p>
-<p><button id="login">登录</button></p>
+<style>
+    body{
+        font-size: 20px;
+        padding-left:30px;
+    }
+    h1,h3,p,ul,li{
+        padding: 10px;
+    }
+    #additem{
 
-<h3>注册</h3>
-<p>
-    <lable>用户名</lable>
-    <input type="text" id="rusername">
-</p>
-<p>
-    <lable>密码</lable>
-    <input type="text" id="rpassword">
-</p>
-<p><button id="register">注册</button></p>
+    }
+    select,button{
+        font-size:20px;
+        vertical-align: top;
+    }
+    .left{
+        position: absolute;
+        top: 0;
+        right: 100px;
+    }
+</style>
+<body ng-app="myapp">
+<h1>文章导入</h1>
+<!--<h3>登录</h3>-->
+<!--<p>-->
+<!--<lable>用户名</lable>-->
+<!--<input type="text" id="username">-->
+<!--</p>-->
+<!--<p>-->
+<!--<lable>密码</lable>-->
+<!--<input type="text" id="password">-->
+<!--</p>-->
+<!--<p><button id="login">登录</button></p>-->
+
+<!--<h3>注册</h3>-->
+<!--<p>-->
+<!--<lable>用户名</lable>-->
+<!--<input type="text" id="rusername">-->
+<!--</p>-->
+<!--<p>-->
+<!--<lable>密码</lable>-->
+<!--<input type="text" id="rpassword">-->
+<!--</p>-->
+<!--<p><button id="register">注册</button></p>-->
 
 
 <h3>添加二级文章</h3>
@@ -37,67 +58,51 @@
     <lable>标题</lable>
     <input type="text" id="title">
 </p>
-<p>
-    <lable>内容</lable>
-    <textarea name="" id="cont" cols="30" rows="10"></textarea>
-</p>
 <p><button id="add">添加</button></p>
 
-<h3>指定二级文章，添加段落</h3>
-<p>
-    <lable>标题</lable>
-    <input type="text" id="titleadd">
-</p>
-<p>
-    <lable>追加内容</lable>
-    <textarea name="" id="contmore" cols="30" rows="10"></textarea>
-<li>
-    <select name="" class="type">
-        <option value="para">段落</option>
-        <option value="title">标题</option>
-        <option value="stitle">小标题</option>
-        <option value="keyword">关键字</option>
-        <option value="bold">加粗</option>
-        <option value="tip">提示</option>
-        <option value="html">html</option>
-        <option value="js">js</option>
-        <option value="css">css</option>
-    </select><textarea name="" class="text" id="" cols="30" rows="3"></textarea>
-</li>
-
-</p>
-<p><button id="addit">追加</button></p>
+<div ng-controller="main" class="left">
+    <h3>指定二级文章，添加段落</h3>
+    <p>
+        <lable>标题</lable>
+        <input type="text" id="titleadd">
+    </p>
+    <p><button ng-click="additem()">添加一项</button><button ng-click="removeitem()">删除一项</button></p>
+    <ul id="additem">
+        <additem></additem>
+    </ul>
+    <p><button id="addit">追加</button></p>
+</div>
 
 <h3>获取</h3>
-<p><input type="text" id="ntitle"></p>
+<p><lable>二级标题</lable><input type="text" id="ntitle"></p>
 <p><button class="fetch">获取</button></p>
 </body>
 <script>
-  login.onclick=function () {
-    $.ajax({
-      method:'GET',
-      url:'/api/usr',
-      data:{
-        name:username.value,
-        password: password.value
-      },
-      success:function (response) {
-      }
-    })
-  };
-
-  register.onclick=function () {
-    $.ajax({
-      method:'POST',
-      url:'/api/usr',
-      data:{
-        name:rusername.value,
-        password: rpassword.value
-      },
-      success:function (response) {
-      }
-    })
-  };
+  //  login.onclick=function () {
+  //    $.ajax({
+  //      method:'GET',
+  //      url:'/api/usr',
+  //      data:{
+  //        name:username.value,
+  //        password: password.value
+  //      },
+  //      success:function (response) {
+  //      }
+  //    })
+  //  };
+  //
+  //  register.onclick=function () {
+  //    $.ajax({
+  //      method:'POST',
+  //      url:'/api/usr',
+  //      data:{
+  //        name:rusername.value,
+  //        password: rpassword.value
+  //      },
+  //      success:function (response) {
+  //      }
+  //    })
+  //  };
 
   add.onclick=function () {
     $.ajax({
@@ -105,8 +110,7 @@
       url:'/api/doc',
       data:{
         status:'add',
-        title:title.value,
-        content:cont.value
+        title:title.value
       },
       success:function (response) {
         if(response.code===0){
@@ -119,13 +123,24 @@
   };
 
   addit.onclick=function () {
+//    业务
+    var content=[];
+    $('.type').each(function () {
+      var tmp=$(this)[0].nextSibling.value;
+      if(tmp){
+        content.push(JSON.stringify({
+          type:$(this)[0].value,
+          text:tmp
+        }));
+      }
+    });
     $.ajax({
       method:'POST',
       url:'/api/doc',
       data:{
         status:'addit',
         title:titleadd.value,
-        content: contmore.value
+        content: content.join('#')
       },
       success:function (res) {
         console.log(res);
@@ -146,5 +161,38 @@
       }
     })
   };
+</script>
+<script>
+  var m1=angular.module('myapp',[]);
+  m1.directive('additem',function () {
+    return{
+      restrict:'ECMA',
+      replace:true,
+      template:`
+        <li>
+            <select name="" class="type">
+                <option value="para">段落</option>
+                <option value="title">标题</option>
+                <option value="smtitle">小标题</option>
+                <option value="keyword">关键字</option>
+                <option value="bold">加粗</option>
+                <option value="tip">提示</option>
+                <option value="html">html</option>
+                <option value="js">js</option>
+                <option value="css">css</option>
+            </select><textarea name="" class="text" id="" cols="100" rows="3"></textarea>
+        </li>
+      `
+    }
+  });
+
+  m1.controller('main',['$scope','$compile',function ($scope,$compile) {
+    $scope.additem=function () {
+      $('#additem').append($compile('<additem></additem>')($scope));
+    };
+    $scope.removeitem=function () {
+      $('#additem li').eq(-1).remove();
+    };
+  }]);
 </script>
 </html>
