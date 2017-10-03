@@ -1,0 +1,64 @@
+h2{
+    font-size:30px;
+}
+.text-center{
+    text-align: center
+}
+
+#counter-section{
+    position: relative;
+    .counter-up{
+        position:relative;
+        background:url("../../images/zpimg/counter-bg.jpg") no-repeat;
+        background-size:cover;
+        background-color:#171717;
+        padding: 80px 0 50px 0;
+        top:700px;
+        margin-bottom:500px;//调试用
+        .cover{
+            position: absolute;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            padding:20px;
+            background-color:rgba(0,7,11,0.8);
+        }
+        .page-header-wrapper{
+            color:white;
+            .page-header{
+                position: relative;
+                margin-bottom:60px;
+                border:none;
+                .devider{
+                    width:100%;
+                    height:23px;
+                    margin:20px 0 10px; 
+                    background:url("../../images/zpimg/devider.png") no-repeat center center;
+                }
+            }
+            .fact-inner{
+                padding-bottom:30px;
+                i{
+                    display: block;
+                    margin-bottom:40px;
+                }
+                .counter{
+                    font-size:60px;
+                }
+                .lead{
+                    margin-bottom:20px;
+                    font-size:16px;
+                    font-weight:300px;
+                    line-height:1.4;
+                }
+                @media (min-width: 768px){
+                    .lead{
+                        font-size:21px;
+                    }
+                }
+            }
+        }
+    }
+}
+
