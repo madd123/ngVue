@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="/stylesheets/shop/settle.css">
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!--<script src="https://cdn.bootcss.com/angular.js/1.4.0/angular.min.js"></script>-->
-    <!--<script src="https://cdn.bootcss.com/angular.js/1.4.0/angular-animate.min.js"></script>-->
+    <script src="https://cdn.bootcss.com/angular.js/1.4.0/angular.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.4.0/angular-route.min.js"></script>
 </head>
 <body>
 <div class="settle" ng-app="settle">
@@ -42,5 +42,26 @@
         </div>
     </div>
 </div>
+<script>
+    var m=angular.module('settle',['ngRoute']);
+    m.config(['$routeProvider',function ($routeProvider) {
+      $routeProvider
+          .when('/step1',{
+            templateUrl:'/wphHtml/settle_1.html'
+          })
+          .when('/step2',{
+            templateUrl:'/wphHtml/settle_2.html'
+          })
+          .when('/step3',{
+            templateUrl:'/wphHtml/settle_3.html'
+          })
+          .when('/step4',{
+            templateUrl:'/wphHtml/settle_4.html'
+          })
+          .otherwise({
+            redirectTo:'/step1'
+          });
+    }]);
+</script>
 </body>
 </html>

@@ -6,12 +6,12 @@ var docSchema=mongoose.Schema({
   // content: mongoose.Schema.Types.Mixed
 });
 
-var Document=mongoose.model('document',docSchema);
-
+var Document;
 var doc={};
 
-doc.open=function (cb) {
-  mongoose.connect('mongodb://wph:123@wphkj.cn:27017/ngVue');
+doc.open=function (name='document',cb) {
+  Document=mongoose.model(name,docSchema);
+  mongoose.connect('mongodb://wph:123@wphkj.cn:27017/ngVue/'+name);
   var db=mongoose.connection;
   db.on('error',console.error.bind(console,'连接数据库发生错误： '));
   //TODO：这里的open回调一定要写成函数，不能直接调用

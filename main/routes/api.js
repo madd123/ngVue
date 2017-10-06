@@ -3,6 +3,7 @@ var router=express.Router();
 var customer=require('../db/customer');
 var document=require('../db/document');
 
+//用户登录注册模块
 router.get('/usr',function (req,res) {
   var query=req.query;
   customer.open(function (con) {
@@ -35,27 +36,30 @@ router.post('/usr',function (req,res) {
   });
 });
 
+//调用接口模块
 router.get('/doc',function (req,res) {
   var query=req.query;
-  document.open(function (con) {
+  document.open(query.name,function (con) {
     if(query.title){
       document.getDoc(query.title,function (result) {
         document.close(con);
-        res.end('获取到 '+query.title+' 该标题下的内容:'+result[0].content);
+        res.json(result[0]);
+        res.end();
       });
     }else{
       document.getAllDoc(function (result) {
         document.close(con);
-        res.end('获取到所有内容了');
+        res.end();
       });
     }
   });
 });
 
+//存数据
 router.post('/doc',function (req,res) {
   var body=req.body;
   if(req.body.status==='add'){
-    document.open(function (con) {
+    document.open(body.name,function (con) {
       document.addDoc(body.title,function (result) {
         document.close(con);
         if(result===1){
@@ -67,7 +71,7 @@ router.post('/doc',function (req,res) {
       });
     });
   }else if(req.body.status==='addit'){
-    document.open(function (con) {
+    document.open(body.name,function (con) {
       document.addPara(body.title,body.content,function (result) {
         document.close(con);
         if(result===0){

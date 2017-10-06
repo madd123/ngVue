@@ -21,6 +21,9 @@
     #additem{
 
     }
+    p input{
+        font-size: 16px;
+    }
     select,button{
         font-size:20px;
         vertical-align: top;
@@ -33,34 +36,14 @@
 </style>
 <body ng-app="myapp">
 <h1>文章导入</h1>
-<!--<h3>登录</h3>-->
-<!--<p>-->
-<!--<lable>用户名</lable>-->
-<!--<input type="text" id="username">-->
-<!--</p>-->
-<!--<p>-->
-<!--<lable>密码</lable>-->
-<!--<input type="text" id="password">-->
-<!--</p>-->
-<!--<p><button id="login">登录</button></p>-->
-
-<!--<h3>注册</h3>-->
-<!--<p>-->
-<!--<lable>用户名</lable>-->
-<!--<input type="text" id="rusername">-->
-<!--</p>-->
-<!--<p>-->
-<!--<lable>密码</lable>-->
-<!--<input type="text" id="rpassword">-->
-<!--</p>-->
-<!--<p><button id="register">注册</button></p>-->
-
 <details>
     <summary>
         <h3>添加二级标题</h3>
     </summary>
     <p>
-        <lable>标题</lable>
+        <lable>所处一级标题</lable>
+        <input type="text" id="namea">
+        <lable>要添加的二级标题</lable>
         <input type="text" id="title">
     </p>
     <p><button id="add">添加</button></p>
@@ -73,10 +56,16 @@
     </summary>
     <div ng-controller="main" class="left">
         <p>
-            <lable>标题</lable>
+            <lable>所处一级标题</lable>
+            <input type="text" id="nameadd">
+            <lable>指定的二级标题</lable>
             <input type="text" id="titleadd">
         </p>
-        <p><button ng-click="additem()">添加一项</button><button ng-click="removeitem()">删除一项</button></p>
+        <p>
+            <button ng-click="additem()">添加一项</button>
+            <button ng-click="removeitem()">删除一项</button>
+            <button ng-click="clear()">清空所有</button>
+        </p>
         <ul id="additem">
             <additem></additem>
         </ul>
@@ -88,44 +77,23 @@
     <summary>
         <h3>获取</h3>
     </summary>
-    <p><lable>二级标题</lable><input type="text" id="ntitle"></p>
-    <p><button class="fetch">获取</button></p>
+    <p>
+        <lable>所处一级标题</lable>
+        <input type="text" id="nameget">
+        <lable>要获取的二级标题</lable><input type="text" id="ntitle">
+    </p>
+    <p><button class="fetch">获取</button><span>请打开console查看结果~</span></p>
 </details>
 
 </body>
 <script>
-  //  login.onclick=function () {
-  //    $.ajax({
-  //      method:'GET',
-  //      url:'/api/usr',
-  //      data:{
-  //        name:username.value,
-  //        password: password.value
-  //      },
-  //      success:function (response) {
-  //      }
-  //    })
-  //  };
-  //
-  //  register.onclick=function () {
-  //    $.ajax({
-  //      method:'POST',
-  //      url:'/api/usr',
-  //      data:{
-  //        name:rusername.value,
-  //        password: rpassword.value
-  //      },
-  //      success:function (response) {
-  //      }
-  //    })
-  //  };
-
   add.onclick=function () {
     $.ajax({
       method:'POST',
       url:'/api/doc',
       data:{
         status:'add',
+        name:namea.value,
         title:title.value
       },
       success:function (response) {
@@ -155,11 +123,16 @@
       url:'/api/doc',
       data:{
         status:'addit',
+        name:nameadd.value,
         title:titleadd.value,
         content: content.join('#')
       },
       success:function (res) {
-        console.log(res);
+        if(res.code===0){
+          alert('成功');
+        }else{
+          alert(res.msg);
+        }
       }
     });
   };
@@ -170,10 +143,11 @@
       method:'GET',
       url:'/api/doc',
       data:{
+        name:nameget.value,
         title:ntitle.value
       },
       success:function (response) {
-        console.log(response);
+        console.log(response)
       }
     })
   };
@@ -187,15 +161,17 @@
       template:`
         <li>
             <select name="" class="type">
-                <option value="para">段落</option>
-                <option value="title">标题</option>
-                <option value="smtitle">小标题</option>
+                <option value="para">一般内容</option>
+                <option value="title">标签</option>
+                <option value="smtitle">小标签</option>
+                <option value="link">链接</option>
                 <option value="keyword">关键字</option>
-                <option value="bold">加粗</option>
-                <option value="tip">提示</option>
-                <option value="html">html</option>
-                <option value="js">js</option>
-                <option value="css">css</option>
+                <option value="bold">纯加粗</option>
+                <option value="tip">提示框</option>
+                <option value="new">新增项</option>
+                <option value="html">HTML代码</option>
+                <option value="js">JS代码</option>
+                <option value="css">CSS代码</option>
             </select><textarea name="" class="text" id="" cols="100" rows="3"></textarea>
         </li>
       `
@@ -209,6 +185,9 @@
     $scope.removeitem=function () {
       $('#additem li').eq(-1).remove();
     };
+    $scope.clear=function () {
+      $('#additem').html('');
+    }
   }]);
 </script>
 </html>
