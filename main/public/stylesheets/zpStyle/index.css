@@ -1,6 +1,16 @@
 h2 {
   font-size: 30px;
 }
+h3 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+h4 {
+  font-weight: 400;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
 .text-center {
   text-align: center;
 }
@@ -20,6 +30,15 @@ h2 {
   margin: 20px 0 10px;
   background: url("../../images/zpimg/devider.png") no-repeat center center;
 }
+.cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: rgba(0, 7, 11, 0.8);
+}
 #counter-section {
   position: relative;
 }
@@ -29,15 +48,6 @@ h2 {
   background-size: cover;
   background-color: #171717;
   padding: 80px 0 50px 0;
-}
-#counter-section .counter-up .cover {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  background-color: rgba(0, 7, 11, 0.8);
 }
 #counter-section .counter-up .page-header-wrapper {
   color: white;
@@ -131,8 +141,231 @@ h2 {
   margin-top: 0;
 }
 #partners-section {
-  padding: 80px;
+  padding: 80px 0;
   background: #f8f8f8 url("../../images/zpimg/pat-bg.png") repeat;
+}
+#partners-section #owl-partners {
+  width: 100%;
+  margin: 0 auto;
+  cursor: e-resize;
+}
+#prices-section .price-box .panel {
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+#prices-section .price-box .panel .panel-heading {
+  padding-top: 25px;
+  border: none;
+  color: #333;
+  background: #f5f5f5;
+  box-shadow: inset 0px 4px 0px #363940;
+}
+#prices-section .price-box .panel .panel-body {
+  padding: 15px;
+  background-color: #eee;
+}
+#prices-section .price-box .panel .panel-body .lead {
+  margin: 0;
+  font-size: 48px;
+}
+#prices-section .price-box .panel .list-group .list-group-item {
+  color: #222;
+  border: none;
+}
+#prices-section .price-box .panel .panel-footer {
+  padding: 25px 15px;
+  background-color: #EEE;
+}
+#prices-section .price-box .panel .panel-footer .btn {
+  position: relative;
+  letter-spacing: 1.5px;
+  border: none;
+  background: #362940;
+  color: #fff;
+}
+#social-section {
+  padding: 80px 0;
+  background: #f8f8f8 url("../../images/zpimg/pat-bg.png") repeat;
+}
+#social-section .social-list {
+  margin: 0 auto;
+}
+#social-section .social-list li {
+  display: inline-block;
+  margin-right: 20px;
+}
+#social-section .social-list li a {
+  display: block;
+}
+#social-section .social-list li a:hover .rotate-box-icon {
+  transform: rotate(0deg);
+}
+#social-section .social-list li a:hover i {
+  transform: rotate(0deg);
+}
+#social-section .social-list li .rotate-box-icon {
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-right: 25px;
+  margin-top: 10px;
+  float: left;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  color: #FFF !important;
+  font-size: 18px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background: #363940;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+#social-section .social-list li .rotate-box-icon::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  bottom: 3px;
+  left: 3px;
+  border: 2px solid #FFF;
+}
+#social-section .social-list li .rotate-box-icon i {
+  transition: all 0.2s ease-in-out;
+  transform: rotate(-45deg);
+}
+#contact-section {
+  position: relative;
+  background-image: url("../../images/zpimg/map.jpg");
+  background-size: cover;
+  background-color: #171717;
+}
+#contact-section .page-header-wrapper {
+  color: white;
+}
+#contact-section .cover {
+  background-color: rgba(5, 8, 11, 0.93);
+}
+#contact-section .contact-info {
+  color: white;
+}
+#contact-section .contact-info .contact-address {
+  width: 100%;
+  padding: 0;
+  margin: 10px 0;
+}
+#contact-section .contact-info .contact-address li {
+  padding: 0 0 15px;
+}
+#contact-section .contact-info .contact-address li span {
+  line-height: 25px;
+}
+#contact-section .contact-form h4 {
+  margin-bottom: 25px;
+  color: white;
+}
+#contact-section .contact-form .form-control {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: #2a2a2a;
+  box-shadow: none;
+  font-size: 14px;
+}
+#contact-section .contact-form button {
+  width: 100%;
+  height: 40px;
+  background: #363940;
+  color: white;
+}
+#contact-section .contact-form button:hover {
+  background: #676d75;
+}
+.text-off-white {
+  color: #e7e7e7;
+}
+.text-off-white .footer-top {
+  padding: 60px 0 35px;
+  background-color: #363940;
+}
+.text-off-white .footer-top .col-md-4 {
+  margin-top: 25px;
+}
+.text-off-white .footer-top .links {
+  margin-top: 15px;
+}
+.text-off-white .footer-top .links li a {
+  color: #fff;
+}
+.text-off-white .footer-top #footer_signup {
+  margin: 20px 0;
+}
+.text-off-white .footer-top #footer_signup #subscribe input {
+  border: 0 none;
+  color: #99abb7;
+  font-style: italic;
+  font-size: 0.9em;
+  padding: 7px 10px;
+  width: 170px;
+  height: 30px;
+  vertical-align: middle;
+}
+.text-off-white .footer-top #footer_signup #subscribe button {
+  background: none repeat scroll 0 0 #676D75;
+  border: 0 none;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 300;
+  padding: 7px 20px;
+  height: 30px;
+  line-height: 10px;
+  vertical-align: middle;
+  transition: all 0.4s ease-in;
+}
+.text-off-white .footer-top .single-tweet {
+  overflow: hidden;
+  padding-bottom: 15px;
+  padding-top: 10px;
+  word-spacing: 2px;
+}
+.text-off-white .footer-top .single-tweet .tweet-content {
+  padding-bottom: 10px;
+}
+.text-off-white .footer-top .single-tweet .tweet-content span {
+  color: #111;
+}
+.text-off-white .footer {
+  padding: 30px 0;
+  background-color: #2d3035;
+}
+#scrolltotop {
+  display: block;
+  color: #676d75;
+  border: 2px solid #676d75;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  z-index: 9999;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+#scrolltotop .fa {
+  padding-left: 4px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 @media only screen and (min-width: 1200px) {
   .team-item .team-triangle {
@@ -195,5 +428,11 @@ h2 {
     width: 50%;
     float: left;
     margin-bottom: 80px;
+  }
+  #contact-section .contact-info {
+    text-align: center;
+  }
+  .text-off-white .footer-top {
+    text-align: center;
   }
 }
