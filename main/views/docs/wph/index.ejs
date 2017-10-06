@@ -15,6 +15,9 @@
     h1,h3,p,ul,li{
         padding: 10px;
     }
+    h1,h2,h3{
+        display: inline-block;
+    }
     #additem{
 
     }
@@ -25,7 +28,7 @@
     .left{
         position: absolute;
         top: 0;
-        right: 100px;
+        left: 300px;
     }
 </style>
 <body ng-app="myapp">
@@ -52,30 +55,43 @@
 <!--</p>-->
 <!--<p><button id="register">注册</button></p>-->
 
-
-<h3>添加二级文章</h3>
-<p>
-    <lable>标题</lable>
-    <input type="text" id="title">
-</p>
-<p><button id="add">添加</button></p>
-
-<div ng-controller="main" class="left">
-    <h3>指定二级文章，添加段落</h3>
+<details>
+    <summary>
+        <h3>添加二级标题</h3>
+    </summary>
     <p>
         <lable>标题</lable>
-        <input type="text" id="titleadd">
+        <input type="text" id="title">
     </p>
-    <p><button ng-click="additem()">添加一项</button><button ng-click="removeitem()">删除一项</button></p>
-    <ul id="additem">
-        <additem></additem>
-    </ul>
-    <p><button id="addit">追加</button></p>
-</div>
+    <p><button id="add">添加</button></p>
+</details>
 
-<h3>获取</h3>
-<p><lable>二级标题</lable><input type="text" id="ntitle"></p>
-<p><button class="fetch">获取</button></p>
+
+<details>
+    <summary>
+        <h3>指定二级标题，添加段落</h3>
+    </summary>
+    <div ng-controller="main" class="left">
+        <p>
+            <lable>标题</lable>
+            <input type="text" id="titleadd">
+        </p>
+        <p><button ng-click="additem()">添加一项</button><button ng-click="removeitem()">删除一项</button></p>
+        <ul id="additem">
+            <additem></additem>
+        </ul>
+        <p><button id="addit">追加</button></p>
+    </div>
+</details>
+
+<details>
+    <summary>
+        <h3>获取</h3>
+    </summary>
+    <p><lable>二级标题</lable><input type="text" id="ntitle"></p>
+    <p><button class="fetch">获取</button></p>
+</details>
+
 </body>
 <script>
   //  login.onclick=function () {

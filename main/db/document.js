@@ -11,7 +11,7 @@ var Document=mongoose.model('document',docSchema);
 var doc={};
 
 doc.open=function (cb) {
-  mongoose.connect('mongodb://localhost:27017/ngVue');
+  mongoose.connect('mongodb://wph:123@wphkj.cn:27017/ngVue');
   var db=mongoose.connection;
   db.on('error',console.error.bind(console,'连接数据库发生错误： '));
   //TODO：这里的open回调一定要写成函数，不能直接调用
@@ -47,22 +47,24 @@ doc.addDoc=function (title,cb) {
   });
 };
 
+//添加文章
 doc.addPara=function (title,content,cb) {
   content=content.split('#');
+  console.log(content)
   if(content.length===0){
     return cb(1);
   }
-  for(var i=0;i<content.length;i++){
-    JSON.parse(content[i]);
+  for(let i=0;i<content.length;i++){
+    content[i]=JSON.parse(content[i]);
+    //TODO：借由文档更新来理解异步写法，let+回调
+    Document.update({title:title},{$push:{ content: content[i]}},function (err,result) {
     if(i===content.length-1){
-      Document.update({title:title},{$push:{ content: content[i]}},function (err,result) {
         if(result.nModified===0){
           return cb(1);
         }
         return cb(0);
-      });
-    }
-    Document.update({title:title},{$push:{ content: content[i]}});
+      }
+    });
   }
 };
 
