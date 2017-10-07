@@ -13,21 +13,20 @@
   <script src="https://cdn.bootcss.com/angular.js/1.4.0/angular-route.min.js"></script>
 </head>
 <body ng-app="mydoc">
-<div class="container" ng-controller="run">
-  <aside>
-    <span>赞助者</span><br>
-    <img src="/images/docs/becomeit.png" alt=""><br>
-    <span class="btn">成为赞助者</span>
-    <div class="list">
-      <p class="title">更多</p>
-      <h1><a href="#/compare">对比其他框架</a></h1>
-      <h1><a href="#/join">加入 Vue.js 社区</a></h1>
+<div  ng-controller="run">
+    <aside class="hidden-xs hidden-sm">
+      <span>赞助者</span><br>
+      <img src="/images/docs/becomeit.png" alt=""><br>
+      <span class="btn">成为赞助者</span>
+      <div class="list">
+        <p class="title">更多</p>
+        <div ng-view></div>
+      </div>
+    </aside>
+    <div class="content">
+      <div id="show"></div>
+      <footer>发现错误？想参与编辑？ <a href="https://github.com/vuejs/cn.vuejs.org/blob/master/src/v2/guide/join.md">在 Github 上编辑此页！</a></footer>
     </div>
-  </aside>
-  <div class="content">
-    <div id="show"></div>
-    <footer>发现错误？想参与编辑？ <a href="https://github.com/vuejs/cn.vuejs.org/blob/master/src/v2/guide/join.md">在 Github 上编辑此页！</a></footer>
-  </div>
 </div>
 <script src="/stylesheets/docs/wph/prettify.js"></script>
 <script>
@@ -40,18 +39,53 @@
         title:name
       },
       success:function (res) {
+        console.log(1)
         show.innerHTML=res.content;
         cb(res);
       }
     });
   }
-  getDoc('对比其他框架',function(data){
-    console.log(data);
-  });
 </script>
 <script>
   var m=angular.module('mydoc',['ngRoute']);
-  m.controller('compareController',)
+  m.controller('compareController',['$scope','$compile',function ($scope,$compile) {
+    getDoc('对比其他框架',function(data){
+      var arr=data.content.match(/<h[23] id="(.+)">(.+)<\/h[23]>/g);
+      var narr=[];
+      for(let i of arr){
+        narr.push(i.replace(/id="(.+)"/,`ng-click="goto('$1')"`));
+      }
+      $('#com').html($compile(narr.join(''))($scope));
+    });
+  }])
+    .controller('joinController',['$scope','$compile',function($scope,$compile){
+      getDoc('加入Vue.js社区',function(data){
+        var arr=data.content.match(/<h[23] id="(.+)">(.+)<\/h[23]>/g);
+        var narr=[];
+        for(let i of arr){
+          narr.push(i.replace(/id="(.+)"/,`ng-click="goto('$1')"`));
+        }
+        $('#join').html($compile(narr.join(''))($scope));
+      });
+    }]);
+  m.config(function ($routeProvider) {
+    $routeProvider
+        .when('/compare',{
+          template:`<h1 class="active"><a href="#/compare">对比其他框架</a></h1>
+                    <div id="com"></div>
+                    <h1><a href="#/join">加入 Vue.js 社区</a></h1>`,
+          controller:'compareController'
+        })
+        .when('/join',{
+          template:`<h1><a href="#/compare">对比其他框架</a></h1>
+                    <h1><a href="#/join">加入 Vue.js 社区</a></h1>
+                    <div id="join"></div>`,
+          controller:'joinController'
+        })
+        .otherwise({
+          redirectTo:'/compare'
+        });
+  });
 //  m.config('$routeProvider',function ($routeProvider) {
 //    $routeProvider
 //        .when('/compare',{
@@ -108,12 +142,12 @@
 //      }
 //    };
 //  });
-  m.controller('run',['$scope','$location','$anchorScroll',function ($scope,$location,$anchorScroll) {
-    $scope.goto=function (href) {
+  m.controller('run',['$scope','$location','$anchorScroll','$rootScope',function ($scope,$location,$anchorScroll,$rootScope) {
+    $rootScope.goto=function (href) {
       $location.hash(href);
       $anchorScroll();
-    }
-  }])
+    };
+  }]);
 </script>
 </body>
 </html>
