@@ -13,7 +13,7 @@
   <script src="https://cdn.bootcss.com/angular.js/1.4.0/angular-route.min.js"></script>
 </head>
 <body ng-app="mydoc">
-<div  ng-controller="run">
+<div class="container" ng-controller="run">
     <aside class="hidden-xs hidden-sm">
       <span>赞助者</span><br>
       <img src="/images/docs/becomeit.png" alt=""><br>
@@ -39,7 +39,6 @@
         title:name
       },
       success:function (res) {
-        console.log(1)
         show.innerHTML=res.content;
         cb(res);
       }
