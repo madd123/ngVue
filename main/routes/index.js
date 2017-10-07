@@ -18,6 +18,10 @@ router.get('/docs/wph', function(req, res, next) {
   res.render('docs/wph/index', { title: 'Express' });
 });
 
+router.get('/docs/insert', function(req, res, next) {
+  res.render('docs/insert', { title: 'Express' });
+});
+
 router.get('/login', function(req, res, next) {
     res.render('yc/login', { title: 'Express' });
 });
