@@ -1,7 +1,7 @@
 var express=require('express');
 var router=express.Router();
 var customer=require('../db/customer');
-var document=require('../db/document');
+var document=require('../db/simple_doc');
 
 //用户登录注册模块
 router.get('/usr',function (req,res) {
@@ -36,7 +36,7 @@ router.post('/usr',function (req,res) {
   });
 });
 
-//调用接口模块
+//(不适用)调用接口模块
 router.get('/doc',function (req,res) {
   var query=req.query;
   document.open(query.name,function (con) {
@@ -55,7 +55,7 @@ router.get('/doc',function (req,res) {
   });
 });
 
-//存数据
+//（不适用）存数据
 router.post('/doc',function (req,res) {
   var body=req.body;
   if(req.body.status==='add'){
@@ -87,4 +87,44 @@ router.post('/doc',function (req,res) {
     res.end(JSON.stringify(req.body.status)+'操作错误，请联系API开发人员');
   }
 });
+
+//字符串版：获取数据
+router.get('/doc/simple',function (req,res) {
+  var query=req.query;
+  document.open(query.name,function (con) {
+    if(query.title){
+      document.getDoc(query.title,function (result) {
+        document.close(con);
+        res.json(result[0]);
+        res.end();
+      });
+    }else{
+      document.getAllDoc(function (result) {
+        document.close(con);
+        res.json(result);
+        res.end();
+      })
+    }
+  })
+});
+
+//字符串版：上传数据
+router.post('/doc/simple',function (req,res) {
+  var body=req.body;
+  if(req.body.status==='add'){
+    document.open(body.name,function (con) {
+      document.addDoc(body.title,body.content,function (result) {
+        document.close(con);
+        if(result===0){
+          res.json({code:0,msg:'添加成功'});
+          res.end();
+        }else{
+          res.json({code:1,msg:'添加失败'});
+          res.end();
+        }
+      })
+    })
+  }
+});
+
 module.exports=router;

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>教程上传下载页</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+<h1>教程上传\下载页</h1>
+<input type="text" id="nameit" placeholder="输入所处一级标题">
+<input type="text" id="title" placeholder="输入二级标题">
+<textarea name="" id="html" cols="30" rows="10"></textarea>
+<button id="submit">上传</button>
+
+<input type="text" id="getname" placeholder="输入所处一级标题">
+<input type="text" id="gettitle" placeholder="输入二级标题">
+<button id="get">获取</button>
+<div id="show">这是展示区</div>
+
+<script>
+    submit.onclick=function () {
+      $.ajax({
+        method:'POST',
+        url:'/api/doc/simple',
+//        contentType:'text/plain',
+        data:{
+          status:'add',
+          name:nameit.value,
+          title:title.value,
+          content:html.value
+        },
+        success:function (res) {
+          console.log(res)
+        }
+      });
+    };
+    get.onclick=function () {
+      $.ajax({
+        method:'GET',
+        url:'/api/doc/simple',
+        data:{
+          name:getname.value,
+          title:gettitle.value
+        },
+        success:function (res) {
+          console.log(res);
+          show.innerHTML=res.content;
+        }
+      })
+    }
+</script>
+</body>
+</html>
