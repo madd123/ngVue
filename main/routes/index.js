@@ -23,11 +23,11 @@ router.get('/docs/insert', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-    res.render('yc/login', { title: 'Express' });
+    res.render('yc/login', { title: 'Login',bg:"bg1","main":"main-log" });
 });
 
 router.get('/register', function(req, res, next) {
-    res.render('yc/register', { title: 'Express' });
+    res.render('yc/register', { title: 'Register',bg:"bg2","main":"main-reg" });
 });
 
 module.exports = router;
