@@ -50,7 +50,7 @@ doc.addDoc=function (title,content,cb) {
 doc.getAllDoc=function (cb) {
   Document.find(function (err,result) {
     cb(result);
-  })
+  });
 };
 
 doc.getDoc=function (title,cb) {
