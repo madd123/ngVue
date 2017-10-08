@@ -1,3 +1,7 @@
+@green:#41b883;
+@blue:#35495e;
+
+
 h2{
     font-size:30px;
 }
@@ -178,7 +182,7 @@ h4{
                 border:none;
                 color:#333;
                 background:#f5f5f5;
-                box-shadow: inset 0px 4px 0px #363940;
+                box-shadow: inset 0px 4px 0px @green;
             }
             .panel-body{
                 padding:15px;
@@ -186,6 +190,7 @@ h4{
                 .lead{
                     margin:0;
                     font-size:48px;
+                    color:@blue;
                 }
             }
             .list-group{
@@ -201,8 +206,12 @@ h4{
                     position: relative;
                     letter-spacing: 1.5px;
                     border: none;
-                    background:#362940;
+                    background:@green;
                     color:#fff;
+                    transition: all 0.6s ease-in-out;
+                    &:hover{
+                        opacity:0.6;
+                    }
                 }
             }
         }
@@ -230,6 +239,21 @@ h4{
                     i{
                         transform: rotate(0deg);
                     }
+                    .fa-qq{
+                        color:#0087c1;
+                    }
+                    .fa-weixin{
+                        color:#09bb07;
+                    }
+                    .fa-facebook{
+                        color:#3b589c;
+                    }
+                    .fa-twitter{
+                        color:#1da1f3;
+                    }
+                    .fa-google-plus{
+                        color:#d15145;
+                    }
                     
                 }
             }
@@ -249,7 +273,7 @@ h4{
                 -moz-transform: rotate(45deg);
                 -o-transform: rotate(45deg);
                 transform: rotate(45deg);
-                background:#363940;
+                background:@blue;
                 -webkit-transition: all 0.2s ease-in-out;
                 -moz-transition: all 0.2s ease-in-out;
                 -o-transition: all 0.2s ease-in-out;
