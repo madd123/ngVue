@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div ng-view></div>
-            <div class="col-lg-3 col-sm-12 order">
+            <div class="col-lg-3 col-sm-12 order" ng-controller="cart">
                 <h1>您的订单</h1>
                 <div class="order-content">
                     <aside>
@@ -43,11 +43,22 @@
     </div>
 </div>
 <script>
-    var m=angular.module('settle',['ngRoute']);
-    m.config(['$routeProvider',function ($routeProvider) {
+    var app=angular.module('settle',['ngRoute']);
+    app.controller('cart',['$scope',function ($scope) {
+      $.ajax({
+        method:'GET',
+        url:'http://h6.duchengjiu.top/shop/api_cart.php'
+      })
+        $('.order-content').html()
+    }]);
+    app.controller('step1Controller',['$scope',function ($scope) {
+
+    }]);
+    app.config(['$routeProvider',function ($routeProvider) {
       $routeProvider
           .when('/step1',{
-            templateUrl:'/html/settle/settle_1.html'
+            templateUrl:'/html/settle/settle_1.html',
+            controller:'step1Controller'
           })
           .when('/step2',{
             templateUrl:'/html/settle/settle_2.html'
