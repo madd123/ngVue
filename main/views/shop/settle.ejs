@@ -19,17 +19,17 @@
     <div class="container">
         <div class="row">
             <div ng-view></div>
-            <div class="col-lg-3 col-sm-12 order">
+            <div class="col-lg-3 col-sm-12 order" ng-controller="cart">
                 <h1>您的订单</h1>
                 <div class="order-content">
-                    <aside>
+                    <div>
                         <a href=""><img src="" alt=""></a>
                         <p>
                             <a href=""><h3>Vue logo</h3></a>
                             <span>1</span> x <span>￥25.00</span><br>
                             <span>这是商品的描述</span>
                         </p>
-                    </aside>
+                    </div>
                 </div>
                 <div class="total">
                     <input type="text" placeholder="请输入您的折扣券码"><button>使用</button><br>
@@ -43,11 +43,33 @@
     </div>
 </div>
 <script>
-    var m=angular.module('settle',['ngRoute']);
-    m.config(['$routeProvider',function ($routeProvider) {
+    var app=angular.module('settle',['ngRoute']);
+    app.controller('cart',['$scope',function ($scope) {
+      var token=getToken();
+      function getToken() {
+        return localStorage.getItem('token');
+      }
+      $.ajax({
+        method:'GET',
+        url:'http://h6.duchengjiu.top/shop/api_cart.php',
+        data:{
+          token:token
+        },
+        success:function (res) {
+          console.log(res.data);
+//          $('.order-content').html()
+        }
+      })
+
+    }]);
+    app.controller('step1Controller',['$scope',function ($scope) {
+
+    }]);
+    app.config(['$routeProvider',function ($routeProvider) {
       $routeProvider
           .when('/step1',{
-            templateUrl:'/html/settle/settle_1.html'
+            templateUrl:'/html/settle/settle_1.html',
+            controller:'step1Controller'
           })
           .when('/step2',{
             templateUrl:'/html/settle/settle_2.html'
