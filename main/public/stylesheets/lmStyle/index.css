@@ -1,0 +1,41 @@
+div.banner {
+  padding-top: 60px;
+  background-color: #25282a;
+}
+div.banner .news1 .innerLeft {
+  width: 50%;
+  text-align: right;
+  float: left;
+}
+div.banner .news1 .innerLeft img {
+  width: 35%;
+}
+div.banner .innerRight {
+  width: 50%;
+  float: left;
+  text-align: left;
+}
+div.banner .innerRight h1 {
+  line-height: 4.0vw;
+  padding-left: 20px;
+  font-size: 2.3vw;
+  font-weight: 400;
+  color: #a9a9a9;
+}
+.banner > div {
+  padding-top: 60px;
+}
+#carousel-example-generic .carousel-indicators li {
+  width: 5%;
+  height: 5%;
+}
+#carousel-example-generic .carousel-inner .item img {
+  width: 200px;
+  height: 200px;
+}
+#carousel-example-generic .carousel-inner .item .carousel-caption {
+  top: 0;
+  color: red;
+  height: 200px;
+  background-color: #000;
+}
