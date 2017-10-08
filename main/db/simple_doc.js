@@ -64,7 +64,11 @@ doc.getDoc=function (title,cb) {
 doc.removeDoc=function (title,cb) {
   Document.remove({title:title},function (err,result) {
     if(err) console.log(err);
-    cb(result);
+    if(result.length>0){
+      cb(0);
+    }else{
+      cb(1);
+    }
   })
 };
 

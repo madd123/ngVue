@@ -37,7 +37,7 @@ router.post('/usr',function (req,res) {
 });
 
 //(不适用)调用接口模块
-router.get('/doc',function (req,res) {
+router.get('/docs',function (req,res) {
   var query=req.query;
   document.open(query.name,function (con) {
     if(query.title){
@@ -56,7 +56,7 @@ router.get('/doc',function (req,res) {
 });
 
 //（不适用）存数据
-router.post('/doc',function (req,res) {
+router.post('/docs',function (req,res) {
   var body=req.body;
   if(req.body.status==='add'){
     document.open(body.name,function (con) {
@@ -75,10 +75,10 @@ router.post('/doc',function (req,res) {
       document.addPara(body.title,body.content,function (result) {
         document.close(con);
         if(result===0){
-          res.json({code:0,msg:'添加条目成功'});
-          res.end();
-        }else{
           res.json({code:1,msg:'添加条目失败'});
+          res.end();
+        }else {
+          res.json({code:0,msg:'添加条目成功'});
           res.end();
         }
       })
@@ -89,7 +89,7 @@ router.post('/doc',function (req,res) {
 });
 
 //字符串版：获取数据
-router.get('/doc/simple',function (req,res) {
+router.get('/docs/simple',function (req,res) {
   var query=req.query;
   document.open(query.name,function (con) {
     if(query.title){
@@ -109,7 +109,7 @@ router.get('/doc/simple',function (req,res) {
 });
 
 //字符串版：上传数据
-router.post('/doc/simple',function (req,res) {
+router.post('/docs/simple',function (req,res) {
   var body=req.body;
   if(req.body.status==='add'){
     document.open(body.name,function (con) {
@@ -120,6 +120,19 @@ router.post('/doc/simple',function (req,res) {
           res.end();
         }else{
           res.json({code:1,msg:'添加失败'});
+          res.end();
+        }
+      })
+    })
+  }else if(req.body.status==='delete'){
+    document.open(body.name,function (con) {
+      document.removeDoc(body.title,function (result) {
+        document.close(con);
+        if(result===0){
+          res.json({code:0,msg:'删除成功'});
+          res.end();
+        }else{
+          res.json({code:1,msg:'删除失败'});
           res.end();
         }
       })
