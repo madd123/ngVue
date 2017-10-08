@@ -74,7 +74,7 @@ router.post('/docs',function (req,res) {
     document.open(body.name,function (con) {
       document.addPara(body.title,body.content,function (result) {
         document.close(con);
-        if(result===0){
+        if(result===1){
           res.json({code:1,msg:'添加条目失败'});
           res.end();
         }else {
@@ -115,11 +115,11 @@ router.post('/docs/simple',function (req,res) {
     document.open(body.name,function (con) {
       document.addDoc(body.title,body.content,function (result) {
         document.close(con);
-        if(result===0){
-          res.json({code:0,msg:'添加成功'});
+        if(result===1){
+          res.json({code:1,msg:'添加失败'});
           res.end();
         }else{
-          res.json({code:1,msg:'添加失败'});
+          res.json({code:0,msg:'添加成功'});
           res.end();
         }
       })

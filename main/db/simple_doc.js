@@ -33,7 +33,6 @@ doc.addDoc=function (title,content,cb) {
     title:title,
     content:content
   });
-  console.log(content)
   Document.find({title:title},function (err,result) {
     if(result.length===0){
       if(doc.con){
@@ -64,7 +63,7 @@ doc.getDoc=function (title,cb) {
 doc.removeDoc=function (title,cb) {
   Document.remove({title:title},function (err,result) {
     if(err) console.log(err);
-    if(result.length>0){
+    if(result.result.n>0){
       cb(0);
     }else{
       cb(1);
