@@ -9,7 +9,7 @@
     padding: 0px;
     margin: 20px 0;
     /*font: 14px/20px 'courier new';*/
-    font: 16px/22px '微软雅黑';
+    font: 14px/22px '微软雅黑';
   word-spacing: 6px;
   font-stretch: expanded;
     color: #666;
@@ -39,15 +39,15 @@ pre.prettyprint.linenums ol li {
 }
 .prettyprint ol.linenums{ margin-bottom: 0;/*margin-bottom: -8px; margin-top:-8px; margin-right: -8px; position:relative;*/background-color: #272822; padding: 8px}
 /*可以修改下边的颜色实现自定义主题*/
-.prettyprint .com { color: #C0FF3E; }
+.prettyprint .comment { color: #b3b3b3; }
 .prettyprint .lit { color: #AE81FF; }
 .prettyprint .pun,
 .prettyprint .opn,
 .prettyprint .clo { color: #35495e; }
 .prettyprint .fun { color: #dc322f; }
 .prettyprint .str,
-.prettyprint .atv { color: #E6DB74; }
-.prettyprint .kwd,
+.prettyprint .atv { color: #42b983; }
+.prettyprint .kwd{color: #e96900; }
 .prettyprint .tag { color: #2973b7; }
 .prettyprint .typ,
 .prettyprint .atn,
