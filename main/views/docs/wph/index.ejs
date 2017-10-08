@@ -15,7 +15,7 @@
 <body ng-app="mydoc">
 <div class="container" ng-controller="run">
     <aside class="hidden-xs hidden-sm">
-      <span>赞助者</span><br>
+      <p>赞助者</p>
       <img src="/images/docs/becomeit.png" alt=""><br>
       <span class="btn">成为赞助者</span>
       <div class="list">
@@ -30,25 +30,25 @@
 </div>
 <script src="/stylesheets/docs/wph/prettify.js"></script>
 <script>
-  function getDoc(name,cb) {
-    $.ajax({
-      method:'GET',
-      url:'/api/doc/simple',
-      data:{
-        name:'更多',
-        title:name
-      },
-      success:function (res) {
-        show.innerHTML=res.content;
-        cb(res);
-      }
-    });
-  }
+//  function getDoc(name,cb) {
+//    $.ajax({
+//      method:'GET',
+//      url:'/api/doc/simple',
+//      data:{
+//        name:'更多',
+//        title:name
+//      },
+//      success:function (res) {
+//        show.innerHTML=res.content;
+//        cb(res);
+//      }
+//    });
+//  }
 </script>
 <script>
   var m=angular.module('mydoc',['ngRoute']);
-  m.controller('compareController',['$scope','$compile',function ($scope,$compile) {
-    getDoc('对比其他框架',function(data){
+  m.controller('compareController',['$scope','$compile','$rootScope',function ($scope,$compile,$rootScope) {
+    $rootScope.getDoc('对比其他框架',function(data){
       var arr=data.content.match(/<h[23] id="(.+)">(.+)<\/h[23]>/g);
       var narr=[];
       for(let i of arr){
@@ -57,8 +57,8 @@
       $('#com').html($compile(narr.join(''))($scope));
     });
   }])
-    .controller('joinController',['$scope','$compile',function($scope,$compile){
-      getDoc('加入Vue.js社区',function(data){
+    .controller('joinController',['$scope','$compile','$rootScope',function($scope,$compile,$rootScope){
+      $rootScope.getDoc('加入Vue.js社区',function(data){
         var arr=data.content.match(/<h[23] id="(.+)">(.+)<\/h[23]>/g);
         var narr=[];
         for(let i of arr){
@@ -82,69 +82,78 @@
           controller:'joinController'
         })
         .otherwise({
-          redirectTo:'/compare'
+          redirectTo:'/compare',
+          controller:'compareController'
         });
   });
-//  m.config('$routeProvider',function ($routeProvider) {
-//    $routeProvider
-//        .when('/compare',{
-//
-//        })
-//  });
-//  m.service('anchorSmoothScroll',function () {
-//    this.scrollTo = function(eID) {
-//
-//// This scrolling function
-//// is from http://www.itnewb.com/tutorial/Creating-the-Smooth-Scroll-Effect-with-JavaScript
-//
-//      var startY = currentYPosition();
-//      var stopY = elmYPosition(eID);
-//      var distance = stopY > startY ? stopY - startY : startY - stopY;
-//      if (distance < 100) {
-//        scrollTo(0, stopY); return;
-//      }
-//      var speed = Math.round(distance / 100);
-//      if (speed >= 20) speed = 20;
-//      var step = Math.round(distance / 25);
-//      var leapY = stopY > startY ? startY + step : startY - step;
-//      var timer = 0;
-//      if (stopY > startY) {
-//        for ( var i=startY; i<stopY; i+=step ) {
-//          setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
-//          leapY += step; if (leapY > stopY) leapY = stopY; timer++;
-//        } return;
-//      }
-//      for ( var i=startY; i>stopY; i-=step ) {
-//        setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
-//        leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
-//      }
-//
-//      function currentYPosition() {
-//// Firefox, Chrome, Opera, Safari
-//        if (self.pageYOffset) return self.pageYOffset;
-//// Internet Explorer 6 - standards mode
-//        if (document.documentElement && document.documentElement.scrollTop)
-//          return document.documentElement.scrollTop;
-//// Internet Explorer 6, 7 and 8
-//        if (document.body.scrollTop) return document.body.scrollTop;
-//        return 0;
-//      }
-//
-//      function elmYPosition(eID) {
-//        var elm = document.getElementById(eID);
-//        var y = elm.offsetTop;
-//        var node = elm;
-//        while (node.offsetParent && node.offsetParent != document.body) {
-//          node = node.offsetParent;
-//          y += node.offsetTop;
-//        } return y;
-//      }
-//    };
-//  });
+  m.factory('anchorSmoothScroll',function () {
+    this.scrollTo = function(eID) {
+
+// This scrolling function
+// is from http://www.itnewb.com/tutorial/Creating-the-Smooth-Scroll-Effect-with-JavaScript
+
+      var startY = currentYPosition();
+      var stopY = elmYPosition(eID);
+      var distance = stopY > startY ? stopY - startY : startY - stopY;
+      if (distance < 100) {
+        scrollTo(0, stopY); return;
+      }
+      var speed = Math.round(distance / 100);
+      if (speed >= 20) speed = 20;
+      var step = Math.round(distance / 25);
+      var leapY = stopY > startY ? startY + step : startY - step;
+      var timer = 0;
+      if (stopY > startY) {
+        for ( var i=startY; i<stopY; i+=step ) {
+          setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+          leapY += step; if (leapY > stopY) leapY = stopY; timer++;
+        } return;
+      }
+      for ( var i=startY; i>stopY; i-=step ) {
+        setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+        leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
+      }
+
+      function currentYPosition() {
+// Firefox, Chrome, Opera, Safari
+        if (self.pageYOffset) return self.pageYOffset;
+// Internet Explorer 6 - standards mode
+        if (document.documentElement && document.documentElement.scrollTop)
+          return document.documentElement.scrollTop;
+// Internet Explorer 6, 7 and 8
+        if (document.body.scrollTop) return document.body.scrollTop;
+        return 0;
+      }
+
+      function elmYPosition(eID) {
+        var elm = document.getElementById(eID);
+        var y = elm.offsetTop;
+        var node = elm;
+        while (node.offsetParent && node.offsetParent != document.body) {
+          node = node.offsetParent;
+          y += node.offsetTop;
+        } return y;
+      }
+    };
+  });
   m.controller('run',['$scope','$location','$anchorScroll','$rootScope',function ($scope,$location,$anchorScroll,$rootScope) {
     $rootScope.goto=function (href) {
       $location.hash(href);
       $anchorScroll();
+    };
+    $rootScope.getDoc=function (name,cb) {
+        $.ajax({
+          method:'GET',
+          url:'/api/doc/simple',
+          data:{
+            name:'更多',
+            title:name
+          },
+          success:function (res) {
+            show.innerHTML=res.content;
+            cb(res);
+          }
+        });
     };
   }]);
 </script>

@@ -37,19 +37,26 @@ aside{
     color: inherit;
     text-decoration: none;
   }
+  h1,h2,h3{
+    cursor: pointer;
+  }
   img{
     width:150px;
   }
   .btn{
     display: inline-block;
+    margin-bottom: 20px;
+    padding: 4px 0;
+    width: 150px;
     border: 1px solid @green;
     border-radius: 2em;
     color: @green;
     font-size: 0.8em;
-    width: 150px;
-    padding: 4px 0;
     text-align: center;
-    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  .list{
+    padding-bottom: 60px;
   }
 }
 
@@ -59,6 +66,10 @@ aside{
   margin:0 auto;
   max-width: 600px;
   padding-left: 50px;
+  p,li{
+    line-height: 2;
+    color: @grey + #111;
+  }
 }
 
 #show{
@@ -68,14 +79,20 @@ aside{
   }
 
   h1{
-    font-size: 24px;
+    font-size: 28px;
+    padding-bottom: .6em;
   }
   h2{
-    font-size: 20px;
+    font-size: 22px;
+    padding-bottom: .8em;
+    border-bottom: 1px solid #ddd;
   }
   h3{
-    font-size:18px;
+    position: relative;
+    font-size:20px;
     &::before{
+      position: absolute;
+      left:-18px;
       content:'#';
       color: @green;
     }
@@ -83,6 +100,7 @@ aside{
   a{
     color: @green;
     text-decoration: none;
+    padding: 0 4px;
   }
   p{
     margin-top:10px;
@@ -93,12 +111,24 @@ aside{
     padding: 3px 5px;
     background: #f8f8f8;
     color: #e96900;
+    font-weight: bold;
     border-radius: 2px;
     white-space: nowrap;
     font-family: "Roboto Mono", Monaco, courier, monospace;
   }
+  .end{
+    display: inline-block;
+    padding: 1em 0;
+    &::after{
+      content:' ->';
+    }
+  }
 }
 
+footer{
+  padding: 2em 0 2.6em;
+  border-top: 1px solid #ddd;
+}
 footer a{
   font-weight: bold;
   color: @green;

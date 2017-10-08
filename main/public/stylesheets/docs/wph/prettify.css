@@ -2,12 +2,16 @@
 /* Original theme - https://github.com/chriskempson/tomorrow-theme */
 /* css88 0.1*/
 .prettyprint,pre.prettyprint {
-    background-color: #444444;
+    background-color: #efefef;
     border: 1px solid #272822;
+  border:none;
     overflow: hidden;
     padding: 0px;
     margin: 20px 0;
-    font: 14px/20px 'courier new';
+    /*font: 14px/20px 'courier new';*/
+    font: 16px/22px '微软雅黑';
+  word-spacing: 6px;
+  font-stretch: expanded;
     color: #666;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -39,15 +43,15 @@ pre.prettyprint.linenums ol li {
 .prettyprint .lit { color: #AE81FF; }
 .prettyprint .pun,
 .prettyprint .opn,
-.prettyprint .clo { color: #F8F8F2; }
+.prettyprint .clo { color: #35495e; }
 .prettyprint .fun { color: #dc322f; }
 .prettyprint .str,
 .prettyprint .atv { color: #E6DB74; }
 .prettyprint .kwd,
-.prettyprint .tag { color: #F92659; }
+.prettyprint .tag { color: #2973b7; }
 .prettyprint .typ,
 .prettyprint .atn,
 .prettyprint .dec,
-.prettyprint .var { color: #A6E22E; }
-.prettyprint .pln { color: #66D9EF; }
+.prettyprint .var { color: #e96900; }
+.prettyprint .pln { color: #35495e; }
 
