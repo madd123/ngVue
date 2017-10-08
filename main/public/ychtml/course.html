@@ -174,7 +174,16 @@
                             </a>
                         </div>
                     </div>`;
-
+        $.ajax({
+            type:"GET",
+            url:"/api/docs/simple",
+            data:{
+                name:"规模化"
+            },
+            success:function(response){
+                console.log(response);
+            }
+        })
 
         var m1 = angular.module('myapp',['ngRoute']);
         // 用angular.module()方法创建一个模块化，存入m1变量。
@@ -196,7 +205,7 @@
         }])
 
 
-    m1.controller("Aaa",function($scope,$location, $anchorScroll){
+    m1.controller("Aaa",function($scope,$location,$anchorScroll){
         $scope.gotoAnchor=function(id){
             // $location.hash(id);
             // // 设置hash值
@@ -260,7 +269,7 @@
 
 function changeTitle(){
     var routerStr = location.href.split("#")[1];
-    console.log(routerStr)
+    // console.log(routerStr)
     if(routerStr == "/router"){
         $("#router").slideDown();
         $("#stateManagement").hide();

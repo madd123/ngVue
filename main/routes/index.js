@@ -46,5 +46,8 @@ router.get('/register', function(req, res, next) {
     res.render('yc/register', { title: 'Register',bg:"bg2","main":"main-reg" });
 });
 
+router.get('/course', function(req, res, next) {
+    res.render('yc/course', { });
+});
 module.exports = router;
 
