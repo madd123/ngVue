@@ -528,6 +528,7 @@
     <script src="../javascripts/lm/bootstrap.min.js"></script>
     <script src="http://demo.cssmoban.com/cssthemes4/sbtp_68_unika/inc/owl-carousel/js/owl.carousel.min.js"></script>
     <script src="http://demo.cssmoban.com/cssthemes4/sbtp_68_unika/inc/animations/js/wow.min.js"></script>
+    <script src="http://demo.cssmoban.com/cssthemes4/sbtp_68_unika/inc/isotope.pkgd.min.js"></script>
   <script>
         	// var m1 = angular.module('myNav',[]);
         	// m1.controller('Aaa',function($scope){
@@ -563,6 +564,39 @@ $("#owl-testimonial").owlCarousel({
     pagination : true,
     autoHeight : true
 })
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// Isotop Package
+////////////////////////////////////////////////////////////////////////////////////////////
+
+$('.portfolio_menu ul li').click(function(){
+	$('.portfolio_menu ul li').removeClass('active_prot_menu');
+    $(this).addClass('active_prot_menu');
+    
+});
+$(".portfolio_menu ul li a").click(function(){
+    $(".portfolio_menu ul li a").css({"background":"#fff" ,"color":"#363940 !important"});
+    $(this).css({"background":"#363940","color":"#fff !important"});
+    
+})
+// $(".portfolio_menu ul li a").onblur(function(){
+//     $(this).css("color","#fff !important");
+// })
+
+var $container = $('#portfolio');
+$container.isotope({
+  itemSelector: '.col-sm-4',
+  layoutMode: 'fitRows'
+});
+$('#filters').on( 'click', 'a', function() {
+  var filterValue = $(this).attr('data-filter');
+  $container.isotope({ filter: filterValue });
+  return false;
+});
+
+
             
             
             
