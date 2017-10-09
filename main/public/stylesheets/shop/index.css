@@ -37,8 +37,6 @@ body {
   font-weight: normal;
   line-height: 48.75px;
   margin-bottom: 40.625px;
-  margin-left: 0px;
-  margin-right: 0px;
   margin-top: 40.625px;
   text-align: center;
   text-size-adjust: 100%;
@@ -46,20 +44,139 @@ body {
   vertical-align: middle;
   -webkit-font-smoothing: antialiased;
 }
-#shop #shopNav {
+#shop div a span {
+  position: absolute;
+  right: 35px;
+  top: 10px;
+  font-size: 18.625px;
+  margin-bottom: 40.625px;
+  margin-top: 40.625px;
+}
+#shop div a span img {
+  width: 25px;
+}
+#shop #shopNav1 {
   overflow: hidden;
   position: absolute;
-  left: 15.5%;
+  left: 42.5%;
   top: 183px;
 }
-#shop #shopNav li {
-  float: left;
+#shop #shopNav1 span {
+  font-size: 18.75px;
+  font-weight: bold;
+}
+#shop #shopNav1 li {
   width: 100px;
   height: 30px;
   line-height: 30px;
   text-align: center;
-  background-color: #cccccc;
-  margin-right: 10px;
+  background-color: #000;
+  font-size: 18.75px;
+  font-weight: bold;
+  display: none;
+}
+#shop #shopNav1 li a {
+  color: #fff;
+}
+#shop #shopNav1:hover {
+  cursor: pointer;
+  color: #fff;
+}
+#shop #shopNav1:hover li {
+  display: block;
+  cursor: pointer;
+}
+#shop #shopNav1:hover span {
+  background: #000;
+  padding-right: 3px;
+}
+#shop #shopNav1 > li:hover {
+  background: #fff;
+}
+#shop #shopNav1 > li:hover > a {
+  color: #000;
+}
+#shop #shopNav2 {
+  overflow: hidden;
+  position: absolute;
+  left: 48.5%;
+  top: 183px;
+}
+#shop #shopNav2 span {
+  font-size: 18.75px;
+  font-weight: bold;
+}
+#shop #shopNav2 li {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #000;
+  font-size: 18.75px;
+  font-weight: bold;
+  display: none;
+}
+#shop #shopNav2 li a {
+  color: #fff;
+}
+#shop #shopNav2:hover {
+  cursor: pointer;
+  color: #fff;
+}
+#shop #shopNav2:hover li {
+  display: block;
+  cursor: pointer;
+}
+#shop #shopNav2:hover span {
+  background: #000;
+  padding-right: 3px;
+}
+#shop #shopNav2 > li:hover {
+  background: #fff;
+}
+#shop #shopNav2 > li:hover > a {
+  color: #000;
+}
+#shop #shopNav3 {
+  overflow: hidden;
+  position: absolute;
+  left: 54.5%;
+  top: 183px;
+}
+#shop #shopNav3 span {
+  font-size: 18.75px;
+  font-weight: bold;
+}
+#shop #shopNav3 li {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #000;
+  font-size: 18.75px;
+  font-weight: bold;
+  display: none;
+}
+#shop #shopNav3 li a {
+  color: #fff;
+}
+#shop #shopNav3:hover {
+  cursor: pointer;
+  color: #fff;
+}
+#shop #shopNav3:hover li {
+  display: block;
+  cursor: pointer;
+}
+#shop #shopNav3:hover span {
+  background: #000;
+  padding-right: 3px;
+}
+#shop #shopNav3 > li:hover {
+  background: #fff;
+}
+#shop #shopNav3 > li:hover > a {
+  color: #000;
 }
 #shop .thumbnail > img {
   width: 350px;
@@ -86,6 +203,72 @@ body {
 }
 #shop .row .col-sm-6.col-md-4 .thumbnail img {
   width: 100%;
+}
+#shop .pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+#shop .pagination > li {
+  display: inline;
+}
+#shop .pagination > li > a,
+#shop .pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+#shop .cart {
+  position: fixed;
+  width: 650px;
+  height: 100%;
+  background: white;
+  right: -650px;
+  top: 0;
+  z-index: 9999;
+}
+#shop .cart span {
+  position: fixed;
+  right: 0;
+  top: 0;
+  font-size: 60px;
+  display: none;
+  z-index: 999;
+  margin: 50px;
+  font-weight: lighter;
+}
+#shop .cart p {
+  font-size: 25px;
+  position: fixed;
+  right: 535px;
+  width: 80px;
+  line-height: 80px;
+  z-index: 999;
+  display: none;
+}
+#shop .cart span:hover {
+  cursor: pointer;
+}
+#shop .cart h2 {
+  position: fixed;
+  font-size: 25px;
+  top: 50%;
+  right: 10%;
+  display: none;
+}
+#shop .cart a {
+  text-decoration: none;
+  font-size: 25px;
+  position: fixed;
+  right: 13%;
+  top: 61%;
+  display: none;
 }
 #shop footer {
   background-attachment: scroll;
@@ -122,10 +305,6 @@ body {
   font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 18.75px;
   line-height: 30px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
   max-width: 1600px;
   text-align: center;
 }
@@ -143,4 +322,120 @@ body {
   text-size-adjust: 100%;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
+}
+@media screen and (max-width: 680px) {
+  #shop footer p {
+    position: relative;
+    left: -20%;
+  }
+}
+@media screen and (max-width: 1052px) and (min-width: 680px) {
+  #shop footer p {
+    position: relative;
+    left: 0%;
+  }
+}
+#shop footer ul {
+  color: #000000;
+  display: block;
+  font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 18.75px;
+  line-height: 30px;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  max-width: 1600px;
+  text-align: center;
+  text-size-adjust: 100%;
+}
+#shop footer ul li::after,
+#shop footer ul ul li::after {
+  content: '/';
+  display: inline-block;
+  margin: 9.375px;
+}
+#shop footer ul li > a {
+  background-color: rgba(0, 0, 0, 0);
+  color: #000000;
+  cursor: auto;
+  font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 18.75px;
+  line-height: 30px;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  text-align: center;
+  text-decoration-color: #000000;
+  text-decoration-line: none;
+  text-decoration-style: solid;
+  text-size-adjust: 100%;
+}
+#shop footer ul li:nth-child(1) {
+  position: relative;
+  left: 38%;
+  width: 164px;
+}
+#shop footer ul li:nth-child(2) {
+  position: relative;
+  left: 48%;
+  top: -48px;
+  width: 164px;
+}
+#shop footer ul li:nth-child(3) {
+  position: relative;
+  left: 55%;
+  top: -97px;
+  width: 164px;
+}
+@media screen and (max-width: 1580px) and (min-width: 1052px) {
+  #shop footer ul li:nth-child(1) {
+    position: relative;
+    left: 31%;
+    width: 164px;
+  }
+  #shop footer ul li:nth-child(2) {
+    position: relative;
+    left: 48%;
+    top: -48px;
+    width: 164px;
+  }
+  #shop footer ul li:nth-child(3) {
+    position: relative;
+    left: 60%;
+    top: -97px;
+    width: 164px;
+  }
+}
+@media screen and (max-width: 680px) {
+  #shop footer ul li:nth-child(1) {
+    position: relative;
+    left: 17%;
+    width: 164px;
+  }
+  #shop footer ul li:nth-child(2) {
+    position: relative;
+    left: 17%;
+    width: 164px;
+    top: 10px;
+  }
+  #shop footer ul li:nth-child(3) {
+    position: relative;
+    left: 17%;
+    width: 164px;
+    top: 20px;
+  }
+}
+@media screen and (max-width: 1052px) and (min-width: 680px) {
+  #shop footer ul li:nth-child(2) {
+    position: relative;
+    left: 38%;
+    top: 0px;
+    width: 164px;
+  }
+  #shop footer ul li:nth-child(3) {
+    position: relative;
+    left: 38%;
+    top: -8px;
+    width: 164px;
+  }
 }

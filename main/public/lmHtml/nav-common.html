@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" ng-con>
     <div class="row">
         <!-- 大屏幕 -->
         <div class="col-md-12 widescreen hidden-xs">
@@ -7,23 +7,23 @@
                 <img src="../images/lm/logo.png" alt="">
                 <span>Vue.js</span>
             </a>
-            <ul class="navitem">
+            <ul class="navitem" ng-controller="dl">
                 <!-- (li>a+span+ul)*6     -->
                 <li>
-                    <a href="/login">登陆</a>
+                    <a href="/login" id="denglu">登陆</a>
                 </li>
                 <li>
                     <a href="/register">注册</a>
                 </li>
                 <li>
-                    <a class="nav-link">学习</a>
+                    <a class="nav-link">文档</a>
                     <span class="arrow"></span>
                     <ul class="nav-dropdown">
                         <li><a href="/jiaochenng">教程</a></li>
                         <li><a href="/API">API</a></li>
                         <li><a href="/beta">风格指南 (beta)</a></li>
                         <li><a href="/example">示例</a></li>
-
+                        <li><a href="/course">规模化</a></li>
                     </ul>
                 </li>
 
@@ -71,7 +71,7 @@
                     <a href="/shop">商店</a>
                 </li>
                 <li>
-                    <a href="/team">团队</a>
+                    <a href="/team">关于</a>
                 </li>
             </ul>
         </div>
