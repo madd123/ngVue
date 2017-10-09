@@ -30,4 +30,16 @@ router.get('/register', function(req, res, next) {
     res.render('yc/register', { title: 'Register',bg:"bg2","main":"main-reg" });
 });
 
+router.get('/zp/docs', function(req, res, next) {
+    res.render('zp/docs', { title: 'docs'});
+});
+
+router.get('/zp/introduce', function(req, res, next) {
+    res.render('zp/introduce', { title: 'introduce'});
+});
+
+router.get('/zp/VueExample', function(req, res, next) {
+    res.render('zp/VueExample', { title: 'VueExample'});
+});
+
 module.exports = router;

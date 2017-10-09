@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>教程</title>
-    <link rel="stylesheet" href="../stylesheets/common.css">
-    <link rel="stylesheet" href="../stylesheets/docs/wph/prettify.css">
-    <link rel="stylesheet" href="../stylesheets/docs/zp/docs.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/stylesheets/docs/zp/docs.css">
+    <link rel="stylesheet" href="/stylesheets/docs/wph/prettify.css">
 </head>
 
 <body>
-    <div id="main" class="fix-sidebar">
+    <div id="main" class="fix-sidebar"  ng-controller="Aaa">
         <div class="sidebar">
             <div class="sidebar-inner">
                 <div class="list">
@@ -31,13 +31,13 @@
                             <option value="v1">1.0</option>
                         </select>
                     </h2>
-                    <ul class="menu-root" ng-controller="Aaa">
+                    <ul class="menu-root">
                         <li>
                             <h3>基础</h3>
                         </li>
                         <li><a href="#" class="sidebar-link">安装</a></li>
                         <li>
-                            <a href="#" class="sidebar-link  current">介绍</a>
+                            <a href="#/introduce" class="sidebar-link  current">介绍</a>
                             <ul class="menu-sub">
                                 <li>
                                     <a href="#Vue-js-是什么" class="section-link active">Vue.js是什么</a>
@@ -60,21 +60,21 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="sidebar-link">
+                            <a href="#/VueExample" class="sidebar-link">
                                 Vue实例
                             </a>
                             <ul class="menu-sub">
                                 <li>
-                                    <a href="#" class="section-link">创建一个 Vue 实例</a>
+                                    <a href="#创建一个 Vue 实例" class="section-link">创建一个 Vue 实例</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="section-link">数据与方法</a>
+                                    <a href="#数据与方法" class="section-link">数据与方法</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="section-link">实例生命周期</a>
+                                    <a href="#实例生命周期" class="section-link">实例生命周期</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="section-link">生命周期图示</a>
+                                    <a href="#生命周期图示" class="section-link">生命周期图示</a>
                                 </li>
                             </ul>
                         </li>
@@ -88,7 +88,7 @@
                 </div>
             </div>
         </div>
-        <div class="content with-sidebar">
+        <div class="content with-sidebar" ng-view>
             <h1>介绍</h1>
             <!-- Vue-js-是什么 -->
             <a href="#Vue-js-是什么">
@@ -217,9 +217,9 @@
     </div>
 
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../stylesheets/docs/wph/prettify.js"></script>
-    <script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/stylesheets/docs/wph/prettify.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.4.0/angular.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.4.0/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
     <script>
         var $root = $('html, body');
         $('.content.with-sidebar a').click(scrollAnimate);
@@ -228,21 +228,31 @@
             $root.animate({
                 scrollTop: $($.attr(this, 'href')).offset().top
             }, 200);
-            $(this).addClass("active").parent().siblings().children("a").removeClass("active");
+            $(this).addClass('active').parent().siblings().children('a').removeClass('active');
+            $(this).parent().parent().parent().siblings().removeClass('current').children('ul').children('li').children('a').removeClass('active')
             return false;
         }
+        $('.menu-root li a').click(function(){
+            $(this).addClass('current').parent().siblings().children('a').removeClass('current');
+            $(this).parent().siblings().children('ul').children('li').children('a').removeClass('active');
+            console.log($(this).parent().children('ul').children('li:first-child').children('a').addClass('active'));
+        })
 
         // angular单页面跳转
         var m1 = angular.module('myApp',['ngRoute']);
 
         m1.config(['$routeProvider',function($routeProvider){
             $routeProvider
-            .when('/indexView',{
-                templateUrl: 'views/indexView.html',
+            .when('/introduce',{
+                templateUrl: 'introduce',
                 controller:'Aaa'
             })
+            .when('/VueExample',{
+                templateUrl: 'VueExample',
+                controller:'Bbb'
+            })
             .otherwise({
-                redirectTo: '/indexView'
+                redirectTo: '/introduce'
 //				otherwise:初始是和哈希值错误情况下的默认处理
 //				redirectTo:默认的哈希和模板
             })
@@ -251,13 +261,21 @@
 
         m1.controller('Aaa',["$scope","$http",function($scope,$http){
             
-            $http({
-                method: "GET",
-                url: "http://h6.duchengjiu.top/shop/api_goods.php"
-            }).then(function successCallBack(response){
-                console.log(response.data.data);
-                $scope.dataList = response.data.data;
-            })
+            $scope.name = "zhjpo"
+        
+            // $http({
+            //     method: "GET",
+            //     url: "/api/docs/simple"
+            // }).then(function successCallBack(response){
+            //     console.log(response.data.data);
+            //     // $scope.dataList = response.data.data;
+            // })
+        }])
+        m1.controller('Bbb',["$scope","$http",function($scope,$http){
+            
+            $scope.name = "zhoupeng "
+        
+            
         }])
 
 
