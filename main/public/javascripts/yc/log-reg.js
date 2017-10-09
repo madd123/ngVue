@@ -54,7 +54,6 @@ $(function(){
                         if(data.hasOwnProperty(prop)){
                             // 存储到本地仓库
                             localStorage.setItem(prop,data[prop]);
-                            
                         }
                     }
                     if(location.hash){
@@ -62,7 +61,6 @@ $(function(){
                     }else{
                         location.href =" index.html";
                     }
-                    // history.back(1);
                 }else{
                    alert(response.message);
                 }
