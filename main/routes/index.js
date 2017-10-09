@@ -2,28 +2,10 @@
 var express = require('express');
 var router = express.Router();
 
-var Person ={
-    title:"Erpes是的0违法未到法定",
-
-}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
-});
-
-router.get('/lm', function(req, res, next) {
-    res.render('lm/index', Person
-);
-  });
-
-
-  router.get('/lm/123', function(req, res, next) {
-    res.render('lm/index', { title: 'Expr第二个ess' });
-  });
-
-router.get('/shop', function(req, res, next) {
-    res.render('shop/index', { title: '测试' });
 });
 
 router.get('/docs', function(req, res, next) {
