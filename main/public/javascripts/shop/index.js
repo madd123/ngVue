@@ -4,12 +4,17 @@ $.get("http://h6.duchengjiu.top/shop/api_cat.php", function (data) {
     //					console.log(obj);
 
     for (var i = 0; i < obj.data.length; i++) {
-
-        $("#shopNav1").append('<li><a href="shop.ejs?cat_id=' + obj.data[i].cat_id + '">' + obj.data[i].cat_name + '</a></li>');
-        $("#shopNav2").append('<li><a href="shop.ejs?cat_id=' + obj.data[i].cat_id + '">' + obj.data[i].cat_name + '</a></li>');
-        $("#shopNav3").append('<li><a href="shop.ejs?cat_id=' + obj.data[i].cat_id + '">' + obj.data[i].cat_name + '</a></li>');
+        if(i<3){
+            $("#shopNav1").append('<li><a href="shop.ejs?cat_id=' + obj.data[i].cat_id + '">' + obj.data[i].cat_name + '</a></li>');
+        }else if(i>=3&&i<6){
+            $("#shopNav2").append('<li><a href="shop.ejs?cat_id=' + obj.data[i].cat_id + '">' + obj.data[i].cat_name + '</a></li>');
+        }else{
+            $("#shopNav3").append('<li><a href="shop.ejs?cat_id=' + obj.data[i].cat_id + '">' + obj.data[i].cat_name + '</a></li>');
+        }
         
-    
+       
+        
+        
     }
 
 });
@@ -38,10 +43,10 @@ var madd =function(page=1){
                 <div class="thumbnail">
                     <img src="${data.goods_thumb}" alt="...">
                     <div class="caption">
-                        <a href="detail.html?cat_id=${data.cat_id}&goods_id=${data.goods_id}"><h5>商品名称:${data.goods_name}</h5></a>
+                        <a href="detail.ejs?cat_id=${data.cat_id}&goods_id=${data.goods_id}"><h5>商品名称:${data.goods_name}</h5></a>
                         <h6>商品详情:${data.goods_desc}</h6>
                         <p>价格:${data.price}</p>
-                        <p><a href="#" class="btn btn-primary" role="button">加入购物车</a></p>
+                        <p><a href="../../views/shop/cart.ejs" class="btn btn-primary" role="button">加入购物车</a></p>
                     </div>
                 </div>
             </div>
@@ -54,10 +59,24 @@ var madd =function(page=1){
 }
 madd();
 // 分页
+$(".Pre").click(function () {
+    // console.log(1111);
+    // console.log(this.innerHTML);
+    $('.mdda').parent().addClass('active').siblings().removeClass('active');
+    $('#goodsList').html('');
+    madd($('.mdda').html());
+});
 $(".mdda").click(function () {
     // console.log(1111);
     // console.log(this.innerHTML);
     $(this).parent().addClass('active').siblings().removeClass('active');
     $('#goodsList').html('');
     madd($(this).html());
+});
+$(".Next").click(function () {
+    // console.log(1111);
+    // console.log(this.innerHTML);
+    $(".mdda").parent().removeClass('active').siblings().addClass('active');
+    $('#goodsList').html('');
+    madd($('.mdda').html());
 });

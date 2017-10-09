@@ -4,7 +4,7 @@
 <head>
   <title>vue商品页</title>
   <link rel="stylesheet" type="text/css" href="../../public/stylesheets/shop/index.css">
-  <link rel="stylesheet" type="text/css" href="../../public/stylesheets/common.css">
+  <link rel="stylesheet" type="text/css" href="../../public/stylesheets/common.css">  
 </head>
 
 <body>
@@ -18,16 +18,21 @@
         <span>The Vue Shop</span>
       </a>
     </nav>
+    <div>
+        <a href="../../views/shop/cart.ejs">
+          <span>购物车</span>
+        </a>
+      </div>
     <!-- 内容部分商品展示 -->
     <ul id="shopNav1">
-      家具
+      <span>家具</span>
     </ul>
     <ul id="shopNav2">
-        数码
-      </ul>
-      <ul id="shopNav3">
-          衣服
-        </ul>
+      <span>数码</span>
+    </ul>
+    <ul id="shopNav3">
+      <span>衣服</span>
+    </ul>
     <div class="container">
       <div class="row" id="goodsList">
         <!--<div class="col-sm-6 col-md-4">-->
@@ -44,25 +49,44 @@
       </div>
     </div>
     <!-- 内容部分商品展示结束 -->
-
-
+    <!-- 分页 -->
+  <nav aria-label="Page navigation">
+      <ul class="pagination page-ul">
+        <li>
+          <a href="javascript:" aria-label="Previous" class="Pre">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li><a class="mdda" href="javascript:">1</a></li>
+        <li><a class="mdda" href="javascript:">2</a></li>
+        <li><a class="mdda"href="javascript:">3</a></li>
+        <li><a class="mdda"href="javascript:">4</a></li>
+        <li><a class="mdda"href="javascript:">5</a></li>
+        <li>
+          <a href="javascript:" aria-label="Next" class="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  
 
 
     <!-- 最大的div -->
 
     <!-- 页尾部分 -->
     <footer class="brandFooter" data-nav="slide" data-theme-bar="slide" role="contentinfo">
-        <p class="brandFooterpoweredby">Powered by <a href="https://www.threadless.com/artist-shops/signup?thref=shop_vue&amp;utm_medium=artist_shop&amp;utm_source=vue&amp;utm_campaign=powered_by" title="Sell custom products online for free with Artist Shops">Threadless Artist Shops</a></p>
-        <ul class="brandFooternav">
-            <li>© The Vue Shop</li>
-            <li><a href="#help" title="Help &amp; Returns" data-beacon-trigger="help">Help &amp; Returns</a></li>
-            <li><a href="#legal" title="Legal" data-beacon-trigger="legal">Legal</a></li>
-        </ul>
+      <p class="brandFooterpoweredby">Powered by <a href="https://www.threadless.com/artist-shops/signup?thref=shop_vue&amp;utm_medium=artist_shop&amp;utm_source=vue&amp;utm_campaign=powered_by"
+          title="Sell custom products online for free with Artist Shops">Threadless Artist Shops</a></p>
+      <ul class="brandFooternav">
+        <li>© The Vue Shop</li>
+        <li><a href="#help" title="Help &amp; Returns" data-beacon-trigger="help">Help &amp; Returns</a></li>
+        <li><a href="#legal" title="Legal" data-beacon-trigger="legal">Legal</a></li>
+      </ul>
     </footer>
   </div>
   <script src="../../public/javascripts/shop/jquery-1.12.3.min.js"></script>
-<script src="../../public/javascripts/shop/index.js"></script>
-
+  <script src="../../public/javascripts/shop/index.js"></script>  
 </body>
 
 </html>
