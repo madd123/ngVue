@@ -51,11 +51,14 @@ body {
         a{
             span{
                 position: absolute;
-                right: 0;
-                top: 0;
+                right: 35px;
+                top: 10px;
                 font-size: 18.625px;
                 margin-bottom: 40.625px;
                 margin-top: 40.625px;
+                img{
+                    width: 25px;
+                }
             }
         }
     }
@@ -207,6 +210,9 @@ body {
                 margin: 15.625px;
                 background: #fff;
                 height: 482px;
+            // .thumbnail:hover>img{
+            //     transform: scale(1.2);
+            // }
                 img {
                     width: 100%;
                 }
@@ -236,6 +242,54 @@ body {
         border: 1px solid #ddd
     }
     
+    // 购物车页面
+    .cart{
+        position: fixed;
+        width: 650px;
+        height: 100%;
+        background: white;
+        right: -650px;
+        top: 0;
+        z-index: 9999;
+        span{
+            position: fixed;
+            right: 0;
+            top: 0;
+            font-size: 60px;
+            display: none;
+            z-index: 999;
+            margin:50px;
+            font-weight: lighter;
+
+        }
+        p{
+            font-size: 25px;
+            position: fixed;
+            right: 535px;
+            width: 80px;
+            line-height: 80px;
+            z-index: 999;
+            display: none;
+        }
+        span:hover{
+            cursor: pointer;
+        }
+        h2{
+            position: fixed;
+            font-size: 25px;
+            top: 50%;
+            right: 10%;
+            display: none;
+        }
+        a{
+            text-decoration: none;
+            font-size: 25px;
+            position: fixed;
+            right: 13%;
+            top: 61%;
+            display: none;
+        }
+    }
     footer {
         background-attachment: scroll;
         background-clip: border-box;
