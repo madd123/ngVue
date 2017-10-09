@@ -28,7 +28,6 @@ router.get('/register', function(req, res, next) {
     res.render('yc/register', { title: 'Register',bg:"bg2","main":"main-reg" });
 });
 
-<<<<<<< HEAD
 router.get('/zp/docs', function(req, res, next) {
     res.render('zp/docs', { title: 'docs'});
 });
@@ -41,10 +40,9 @@ router.get('/zp/VueExample', function(req, res, next) {
     res.render('zp/VueExample', { title: 'VueExample'});
 });
 
-=======
 router.get('/course', function(req, res, next) {
     res.render('yc/course', { });
 });
->>>>>>> 45e8ccdeb576d52e3ea193cfea42366c29f64c91
+
 module.exports = router;
 
