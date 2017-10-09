@@ -18,6 +18,7 @@ $.get("http://h6.duchengjiu.top/shop/api_cat.php", function (data) {
     }
 
 });
+
 //通过location.search获取get传参的数据 截取？后面的内容
 var str = location.search.substr(1);
 //用分割方法得到 = 号两边内容
@@ -35,6 +36,7 @@ var madd =function(page=1){
         "dataType": "json",
         "success": function (response) {
             //    console.log(response);
+            localStorage.setItem("page",page);
             var obj = response.data;
             for (var i = 0; i < obj.length; i++) {
                 var data = obj[i];
@@ -59,24 +61,47 @@ var madd =function(page=1){
 }
 madd();
 // 分页
+
 $(".Pre").click(function () {
     // console.log(1111);
     // console.log(this.innerHTML);
-    $('.mdda').parent().addClass('active').siblings().removeClass('active');
+    $(this).parent().addClass('active').siblings().removeClass('active');
     $('#goodsList').html('');
-    madd($('.mdda').html());
+    if(1*localStorage.getItem("page")-1==0){
+       alert("上一个页面没有商品了呦！");
+       location.href=('../../../views/shop/shop.ejs');
+    }
+   
+    madd(1*localStorage.getItem("page")-1);
 });
 $(".mdda").click(function () {
     // console.log(1111);
     // console.log(this.innerHTML);
-    $(this).parent().addClass('active').siblings().removeClass('active');
     $('#goodsList').html('');
     madd($(this).html());
 });
 $(".Next").click(function () {
     // console.log(1111);
     // console.log(this.innerHTML);
-    $(".mdda").parent().removeClass('active').siblings().addClass('active');
     $('#goodsList').html('');
-    madd($('.mdda').html());
+    madd(1*localStorage.getItem("page")+1);
+    
 });
+
+
+// 购物车页面开始
+$('.cartWord').click(function () {
+    $('.cart').css("right","0");
+    $('.cancel').show();
+    $('.cartCar').show();
+    $('.cart h2').show();
+    $('.cart a').show();
+})
+$('.cancel').click(function(){
+    $('.cart').css("right","-650px");
+    $('.cancel').hide();
+    $('.cartCar').hide();
+    $('.cart h2').hide();
+    $('.cart a').hide();
+    
+})

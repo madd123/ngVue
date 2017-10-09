@@ -46,11 +46,14 @@ body {
 }
 #shop div a span {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 35px;
+  top: 10px;
   font-size: 18.625px;
   margin-bottom: 40.625px;
   margin-top: 40.625px;
+}
+#shop div a span img {
+  width: 25px;
 }
 #shop #shopNav1 {
   overflow: hidden;
@@ -220,6 +223,52 @@ body {
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #ddd;
+}
+#shop .cart {
+  position: fixed;
+  width: 650px;
+  height: 100%;
+  background: white;
+  right: -650px;
+  top: 0;
+  z-index: 9999;
+}
+#shop .cart span {
+  position: fixed;
+  right: 0;
+  top: 0;
+  font-size: 60px;
+  display: none;
+  z-index: 999;
+  margin: 50px;
+  font-weight: lighter;
+}
+#shop .cart p {
+  font-size: 25px;
+  position: fixed;
+  right: 535px;
+  width: 80px;
+  line-height: 80px;
+  z-index: 999;
+  display: none;
+}
+#shop .cart span:hover {
+  cursor: pointer;
+}
+#shop .cart h2 {
+  position: fixed;
+  font-size: 25px;
+  top: 50%;
+  right: 10%;
+  display: none;
+}
+#shop .cart a {
+  text-decoration: none;
+  font-size: 25px;
+  position: fixed;
+  right: 13%;
+  top: 61%;
+  display: none;
 }
 #shop footer {
   background-attachment: scroll;
