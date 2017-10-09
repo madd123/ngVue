@@ -49,5 +49,10 @@ router.get('/register', function(req, res, next) {
 router.get('/course', function(req, res, next) {
     res.render('yc/course', { });
 });
+
+router.get('/aboutus', function(req, res, next) {
+    res.render('yc/aboutus', { });
+});
+
 module.exports = router;
 
