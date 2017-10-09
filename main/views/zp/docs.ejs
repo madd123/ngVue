@@ -59,12 +59,12 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="" ng-click="gotoAnchor(title)" class="sidebar-link">
+                            <a href="#VueExample"  class="sidebar-link">
                                 Vue实例
                             </a>
                             <ul class="menu-sub">
                                 <li>
-                                    <a href="#创建一个 Vue 实例" class="section-link">创建一个 Vue 实例</a>
+                                    <a href="#aaa" class="section-link">创建一个 Vue 实例</a>
                                 </li>
                                 <li>
                                     <a href="#数据与方法" class="section-link">数据与方法</a>
@@ -221,6 +221,7 @@
     <script src="https://cdn.bootcss.com/angular.js/1.4.0/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
     <script>
         var $root = $('html, body');
+        $('.menu-sub').hide();
         $('.content.with-sidebar a').click(scrollAnimate);
         $('.menu-sub li a').click(scrollAnimate);
         function scrollAnimate(){
@@ -228,14 +229,19 @@
                 scrollTop: $($.attr(this, 'href')).offset().top
             }, 200);
             $(this).addClass('active').parent().siblings().children('a').removeClass('active');
-            $(this).parent().parent().parent().siblings().removeClass('current').children('ul').children('li').children('a').removeClass('active')
+            // $(this).parent().parent().parent().siblings().removeClass('current').children('ul').children('li').children('a').removeClass('active')
             return false;
         }
         $('.menu-root li a').click(function(){
             $(this).addClass('current').parent().siblings().children('a').removeClass('current');
-            $(this).parent().siblings().children('ul').children('li').children('a').removeClass('active');
-            console.log($(this).parent().children('ul').children('li:first-child').children('a').addClass('active'));
+            $(this).parent().children('ul.menu-sub').slideDown();
+            $(this).parent().siblings().children('ul.menu-sub').slideUp();
+            // $(this).parent().siblings().children('ul').children('li').children('a').removeClass('active');
+            // console.log($(this).parent().children('ul').children('li:first-child').children('a').addClass('active'));
         })
+        // $('.menu-root li a').blur(function(){
+        //     $(this).parent().children('ul.menu-sub').hide();
+        // })
 
         // angular单页面跳转
         var m1 = angular.module('myApp',['ngRoute']);
