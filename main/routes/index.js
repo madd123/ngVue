@@ -43,5 +43,9 @@ router.get('/zp/VueExample', function(req, res, next) {
 router.get('/course', function(req, res, next) {
     res.render('yc/course', { });
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 074c681c01afff643ec75c850d0936862408e00c
 module.exports = router;
 
