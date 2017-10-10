@@ -139,37 +139,56 @@ nav{
         .sidenav{
             position: absolute;
             top: 60px;
-            // left:-240px;
+            left:-240px;
             width: 240px;
-            height: 100px;
+            height: 100vh;
             background: #f9f9f9;
             overflow-y: auto;
+            transition: all 1s;
             
 
             .sidenav-inner{
                 .main-menu{
+                    margin:15px 0 65px 25px;
+                    overflow-y: auto;
+                    
                 }
+                .main-menu>li{
+                    margin:15px 0;
+                }
+                .main-menu>li>a{
+                    
+                    color: #34495e;
+                    font-size: 14px;
+                    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+                    -webkit-font-smoothing: antialiased;
+                }
+                .main-menu>li>ul li{
+                    margin: 10px;
+                }
+                .main-menu>li>ul li>h4{
+                    // margin-left: 15px;
+                    font-weight: 400;
+                }
+            
             }
         }
     }
+
+}
+.sidenav-inner>ul>li:nth-child(3)>ul a{
+    margin-left: 20px;
 }
 
-// header{
-//     // width: 100%;
-//     height: @h68;
-//     .logo{ width: @w200; height: @680; background: @color-gray;float:left;}
-//     nav{
-//         float:left;
-//         li{
-//             width: @w200;
-//             height: @h30;
-//             float: left;
-//             background: @color-sky;
-//             margin-right: 10px+10;
-//             &:hover{
-//                 background: @color-ora;
-//             }
-//         }
-//     }
-// }
-
+.sidenav-inner>ul>li:nth-child(4)>ul h4{
+    margin-left:20px;
+}
+.sidenav-inner>ul>li:nth-child(4)>ul .nav-link{
+    margin-left: 35px;
+}
+#Roadmap>a{
+    margin-left: 20px;
+}
+.sidenav a:hover{
+    border-bottom: 2px solid #42b983;
+}

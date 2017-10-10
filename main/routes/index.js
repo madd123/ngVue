@@ -1,4 +1,3 @@
-
 var express = require('express');
 var router = express.Router();
 
@@ -44,12 +43,9 @@ router.get('/course', function(req, res, next) {
     res.render('yc/course', { });
 });
 
-<<<<<<< HEAD
-=======
 router.get('/aboutus', function(req, res, next) {
     res.render('yc/aboutus', { });
 });
 
->>>>>>> e50a92ff5d11710884afae89a831d5ac731a10c3
 module.exports = router;
 
