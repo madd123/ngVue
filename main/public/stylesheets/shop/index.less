@@ -62,6 +62,7 @@ body {
             }
         }
     }
+   
     #shopNav1 {
         overflow: hidden;
         position: absolute;
@@ -197,15 +198,13 @@ body {
         left: 50%;
         transform: translateX(-50%);
     }
-    .row {
+
+    .row { 
+        overflow: hidden;
         .col-sm-6.col-md-4 {
-            width: 485.98px;
             height: 522.73px;
+            width: 33.3%;
             float: left;
-            margin-bottom: 15.625px;
-            margin-right: 15.625px;
-            margin-left: 15.625px;
-            margin-top: 15.625px;
             .thumbnail {
                 margin: 15.625px;
                 background: #fff;
@@ -215,6 +214,26 @@ body {
             // }
                 img {
                     width: 100%;
+                }
+                .caption{
+                    h5{
+                        text-align: center;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                    h6{
+                        text-align: center;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                    p{
+                        font-size: 18px;
+                        text-align: center;
+                        font-weight: bold;
+                        padding: 10px;
+                    }
                 }
             }
         }
