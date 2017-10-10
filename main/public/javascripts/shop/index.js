@@ -41,10 +41,10 @@ var madd =function(page=1){
                 <div class="thumbnail">
                     <img src="${data.goods_thumb}" alt="...">
                     <div class="caption">
-                        <a href="detail.ejs?cat_id=${data.cat_id}&goods_id=${data.goods_id}"><h5>商品名称:${data.goods_name}</h5></a>
+                        <a href="/shop/detail?cat_id=${data.cat_id}&goods_id=${data.goods_id}"><h5>商品名称:${data.goods_name}</h5></a>
                         <h6>商品详情:${data.goods_desc}</h6>
                         <p>价格:${data.price}</p>
-                        <p><a href="../../views/shop/cart.ejs" class="btn btn-primary" role="button">加入购物车</a></p>
+                       
                     </div>
                 </div>
             </div>

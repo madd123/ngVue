@@ -8,4 +8,8 @@ router.get('/settle',function (req,res,next) {
    res.render('shop/settle',{title:'The Vue Shop'});
 });
 
+router.get("/detail", function(req, res, next) {
+  res.render("shop/detail", { title: "The Vue Shop" });
+});
+
 module.exports = router;
