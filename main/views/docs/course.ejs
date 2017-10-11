@@ -150,18 +150,19 @@
             // console.log(routerStr)
             if (routerStr == "/router") {
                 $("#router").slideDown();
-                $("#stateManagement").hide();
-                $("#ssr").hide();
+                $("#stateManagement").slideUp();
+                $("#ssr").slideUp();
             } else if (routerStr == "/state-management") {
-                $("#router").hide();
+                $("#router").slideUp();
                 $("#stateManagement").slideDown();
-                $("#ssr").hide();
+                $("#ssr").slideUp();
             } else if (routerStr == "/ssr") {
-                $("#router").hide();
-                $("#stateManagement").hide();
+                $("#router").slideUp();
+                $("#stateManagement").slideUp();
                 $("#ssr").slideDown();
             }
         }
+        changeTitle();
 
         var router, stateManagement, ssr;
         $.ajax({
@@ -200,38 +201,28 @@
 
         m1.controller("router", function ($scope) {
             var arr = [];
-            // var arrid = [];
             router.match(/<h[23] id=".+">(.+)<\/h[23]>/g).forEach(function (item) {
                 arr.push(item.match(/>(.+)</)[1]);
-                // arrid.push(item.match(/id="(.+)"/)[1])
             })
             $scope.datalist = arr;
-            // $scope.arrid = arrid;
         })
 
         m1.controller("stateManagement", function ($scope) {
             var arr = [];
-            // var arrid = [];
             stateManagement.match(/<h[23] id=".+">(.+)<\/h[23]>/g).forEach(function (item) {
                 arr.push(item.match(/>(.+)</)[1]);
-                // arrid.push(item.match(/id="(.+)"/)[1])
             })
             $scope.datalist = arr;
-            // $scope.arrid = arrid;
         })
 
         m1.controller("ssr", function ($scope) {
             var arr = [];
-            // var arrid = [];
             ssr.match(/<h[23] id=".+">(.+)<\/h[23]>/g).forEach(function (item) {
                 arr.push(item.match(/>(.+)</)[1]);
-                // arrid.push(item.match(/id="(.+)"/)[1])
             })
             $scope.datalist = arr;
-            // $scope.arrid = arrid;
         })
 
-        changeTitle();
     </script>
 </body>
 
