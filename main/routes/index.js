@@ -20,11 +20,11 @@ router.get('/docs/insert', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-    res.render('yc/login', { title: 'Login',bg:"bg1","main":"main-log" });
+    res.render('log-reg/login', { title: 'Login',bg:"bg1","main":"main-log" });
 });
 
 router.get('/register', function(req, res, next) {
-    res.render('yc/register', { title: 'Register',bg:"bg2","main":"main-reg" });
+    res.render('log-reg/register', { title: 'Register',bg:"bg2","main":"main-reg" });
 });
 
 router.get('/zp/docs', function(req, res, next) {
@@ -39,12 +39,12 @@ router.get('/zp/VueExample', function(req, res, next) {
     res.render('zp/VueExample', { title: 'VueExample'});
 });
 
-router.get('/course', function(req, res, next) {
-    res.render('yc/course', { });
+router.get('/docs/course', function(req, res) {
+    res.render('docs/course', { });
 });
 
-router.get('/aboutus', function(req, res, next) {
-    res.render('yc/aboutus', { });
+router.get('/aboutus', function(req, res) {
+    res.render('aboutus', { });
 });
 
 module.exports = router;
