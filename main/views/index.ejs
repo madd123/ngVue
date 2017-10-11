@@ -553,6 +553,21 @@
                 });
                 return false;
             });
+
+
+            // 回到顶部
+            $(window).scroll(function(){
+                if($(window).scrollTop()>"500"){
+                    $("#scrolltotop").show();
+                }else{
+                    $("#scrolltotop").hide();
+                }
+            })
+
+            $("#scrolltotop").click(function(){
+                console.log($(this));
+                $("body,html").animate({scrollTop:0},1000);
+            })
         </script>
 </body>
 
