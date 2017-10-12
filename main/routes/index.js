@@ -20,32 +20,31 @@ router.get('/docs/insert', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-    res.render('yc/login', { title: 'Login',bg:"bg1","main":"main-log" });
+    res.render('log-reg/login', { title: 'Login',bg:"bg1","main":"main-log" });
 });
 
 router.get('/register', function(req, res, next) {
-    res.render('yc/register', { title: 'Register',bg:"bg2","main":"main-reg" });
+    res.render('log-reg/register', { title: 'Register',bg:"bg2","main":"main-reg" });
 });
 
 router.get('/zp/docs', function(req, res, next) {
-    res.render('zp/docs', { title: 'docs'});
+    res.render('docs/basic/docs', { title: 'docs'});
 });
 
 router.get('/zp/introduce', function(req, res, next) {
-    res.render('zp/introduce', { title: 'introduce'});
+    res.render('docs/basic/introduce', { title: 'introduce'});
 });
 
 router.get('/zp/VueExample', function(req, res, next) {
-    res.render('zp/VueExample', { title: 'VueExample'});
+    res.render('docs/basic/VueExample', { title: 'VueExample'});
 });
 
-router.get('/course', function(req, res, next) {
-    res.render('yc/course', { });
+router.get('/docs/course', function(req, res, next) {
+    res.render('docs/course', { });
 });
 
 router.get('/aboutus', function(req, res, next) {
-    res.render('yc/aboutus', { });
+    res.render('aboutus', { });
 });
 
 module.exports = router;
-

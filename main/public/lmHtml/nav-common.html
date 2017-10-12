@@ -20,7 +20,7 @@
                     <span class="arrow"></span>
                     <ul class="nav-dropdown">
                         <li><a href="/zp/docs">基础</a></li>
-                        <li><a href="/course">规模化</a></li>
+                        <li><a href="/docs/course">规模化</a></li>
                         <li><a href="/docs/wph">更多</a></li>
                         <li><a href="#">API</a></li>
                         <li><a href="#">风格指南 (beta)</a></li>
@@ -71,7 +71,7 @@
                     <a href="/shop">商店</a>
                 </li>
                 <li>
-                    <a href="/team">关于</a>
+                    <a href="/aboutus">关于</a>
                 </li>
             </ul>
         </div>
@@ -96,7 +96,7 @@
                             <span class="arrow"></span>
                             <ul class="nav-dropdown">
                                 <li><a href="/zp/docs">基础</a></li>
-                                <li><a href="/course">规模化</a></li>
+                                <li><a href="/docs/course">规模化</a></li>
                                 <li><a href="/docs/wph">更多</a></li>
                                 <li><a href="/API">API</a></li>
                                 <li><a href="/beta">风格指南 (beta)</a></li>
@@ -154,3 +154,17 @@
         </div>
     </div>
 </div>
+<script>
+    // 登录后更改
+  if(localStorage.getItem("token")){
+    console.log($(".navitem li"));
+    console.log($(".navitem li").eq(0));
+      $("nav .widescreen li").eq(0).html("<a>尊敬的"+localStorage.getItem('username')+"</a>");
+      $("nav .widescreen li").eq(1).html("<a href='javascript:;' class='logout'>退出登录</a>");
+  }
+  // 退出登录
+  $(".logout").click(function(){
+      localStorage.clear();
+      location.reload();
+  });
+</script>

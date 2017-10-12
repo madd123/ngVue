@@ -1,8 +1,8 @@
 $(function(){
     if(localStorage.getItem("token")){
-    $("body").html("<p class='already'>尊敬的"+localStorage.getItem("username")+"，您已登录,3秒后为你跳回<a href='index.html'>点此手动跳转</a></p>");
+    $("body").html("<p class='already'>尊敬的"+localStorage.getItem("username")+"，您已登录,3秒后为你跳回<a href='/'>点此手动跳转</a></p>");
     setTimeout(function() {
-        location.href = "index.html";
+        location.href = "/";
     }, 3000);
     }
 
@@ -59,7 +59,7 @@ $(function(){
                     if(location.hash){
                         location.href = location.hash.substr(10);
                     }else{
-                        location.href =" index.html";
+                        location.href ="/";
                     }
                 }else{
                    alert(response.message);
