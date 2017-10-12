@@ -44,7 +44,7 @@ router.get('/docs/course', function(req, res, next) {
 });
 
 router.get('/aboutus', function(req, res, next) {
-    res.render('yc/aboutus', { });
+    res.render('aboutus', { });
 });
 
 module.exports = router;
