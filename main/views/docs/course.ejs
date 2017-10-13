@@ -7,11 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.bootcss.com/angular.js/1.4.0/angular.min.js"></script>
     <script src="https://cdn.bootcss.com/angular.js/1.4.0/angular-route.min.js"></script>
-    <link rel="stylesheet" href="../stylesheets/ycStyle/course.css">
+    <link rel="stylesheet" href="/stylesheets/ycStyle/course.css">
+    <link rel="stylesheet" href="/stylesheets/lmStyle/indexcom.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../stylesheets/ycStyle/font-awesome/css/font-awesome.min.css">    
     <title>course</title>
 </head>
 
 <body ng-controller="Aaa">
+    <!-- 引入的头部 -->
+    <nav ng-app="myNav" ng-controller="Aaa" ng-include="'/lmHtml/nav-common.html'"></nav>
+        
     <div id="placegolder"></div>
     <div id="main">
         <div class="sidebar">
@@ -162,7 +168,6 @@
                 $("#ssr").slideDown();
             }
         }
-        changeTitle();
 
         var router, stateManagement, ssr;
         $.ajax({
@@ -222,7 +227,23 @@
             })
             $scope.datalist = arr;
         })
-
+        setTimeout(function(){
+            changeTitle();
+            $(".btn").click(function(){
+                let flag = false;
+                return function(){
+                    console.log($("#main .sidebar"))
+                    if(flag){
+                        $("#main .sidebar").css("transform", 'translateX(0)');
+                        flag = !flag;
+                    }else{
+                        $("#main .sidebar").css("transform", 'translateX(-280px)');
+                        flag = !flag;
+                    }
+                }();
+            })
+        },500)
+        
     </script>
 </body>
 

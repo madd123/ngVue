@@ -14,6 +14,7 @@ img{
 ul{
     list-style: none;
     padding: 0;
+    margin:0;
     li{
         margin-top: 0.5em;
     }
@@ -163,7 +164,7 @@ h3{
             word-spacing: 0.05em;
         }
         a{
-        color: #42b983;
+        text-decoration: none;
             h2,h3{
                 &:before,&::before{
                     content: "";
@@ -229,8 +230,8 @@ h3{
         top: 0;
         box-shadow: 0 0 10px rgba(0,0,0,0.2);
         transition: all 0.4s cubic-bezier(0.4, 0, 0, 1);
-        -webkit-transform: translate(-280px, 0);
-        transform: translate(-280px, 0);
+        -webkit-transform: translateX(-280px);
+        transform: translateX(-280px);
         .course-nav{
             padding: 50px 10px 10px 20px;
             box-sizing: border-box;
