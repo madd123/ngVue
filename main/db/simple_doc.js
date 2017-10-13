@@ -22,7 +22,7 @@ doc.open=function (name,cb) {
 };
 
 doc.close=function (con) {
-  con.disconnect(function () {
+  con.connection.close(function () {
     doc.con=false;
     console.log('断开连接');
   });
