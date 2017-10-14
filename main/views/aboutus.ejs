@@ -48,32 +48,59 @@
             <p>Vue.js 的社区正在急速增长中，如果你正在阅读本文，这是你准备好加入 Vue.js 社区的大好机会。欢迎！</p>
         </div>
     </div>
-    <div class="controller">
-        <a href="#" id="up" class="arrow"><i class="fa fa-caret-up"></i></a>
-        <a href="#" id="down" class="arrow"><i class="fa fa-caret-down"></i></a>
-        <a href="#" id="left" class="arrow"><i class="fa fa-caret-left"></i></a>
-        <a href="#" id="right" class="arrow"><i class="fa fa-caret-right"></i></a>
+    
+    <div class="timeAxis">
+        <div class="axis">
+            <div class="progress"></div>
+            <a></a>
+        </div>
+        <div class="controller">
+            <a href="#" id="up" class="arrow"><i class="fa fa-caret-up"></i></a>
+            <a href="#" id="down" class="arrow"><i class="fa fa-caret-down"></i></a>
+            <a href="#" id="left" class="arrow"><i class="fa fa-caret-left"></i></a>
+            <a href="#" id="right" class="arrow"><i class="fa fa-caret-right"></i></a>
+        </div>
+
     </div>
+    
 
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>    
     <script>
         $(function(){
-
             var idx =0;
             carrousel(idx);
-
+            $(document).keydown(function(e){
+                e = e || window.event;
+                // console.log(e.keyCode);
+                switch(e.keyCode){
+                    case 37:
+                        idx--;
+                        if(idx>8) idx = 0;
+                        if(idx<0) idx = 8;
+                        carrousel(idx);
+                        break;
+                    // case 38:
+                    //     break;                    
+                    case 39:
+                        idx++;
+                        if(idx>8) idx = 0;
+                        if(idx<0) idx = 8;
+                        carrousel(idx);
+                        break;
+                    // case 40:
+                    // break;
+                }
+            })
             $("#left").click(function(){
                 idx--;
                 if(idx>8) idx = 0;
                 if(idx<0) idx = 8;
-                console.log(idx)
                 carrousel(idx);
             })
             $("#right").click(function(){
                 idx++;
                 if(idx>8) idx = 0;
                 if(idx<0) idx = 8;
-                console.log(idx)
                 carrousel(idx);
             })
 

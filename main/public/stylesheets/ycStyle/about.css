@@ -108,21 +108,33 @@ margin:0;
 .slide p{
 margin: .1em 5.1em;
 width: 75%;
-font-size: .34em;
+font-size: 1.6em;
 text-shadow: none;
-color: rgba(255,255,255,.8);
+color: #fff;
 display: block;
 text-align: left;
 line-height: 1.2em;
 white-space: normal;
 font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 font-weight: 600;
-font-size: 20px;
+}
 
+.timeAxis{
+    position:fixed;
+    width:100%;
+    height:40px;
+    bottom:0px;
+}
+.axis{
+    position:absolute;
+    background:#fff;
+    border-radius:5px;
+    width:70%;
+    left:10%;
+    height:10px
 }
 .controller{
-    position: fixed;
-    top: 500px;
+    position: absolute;
     right: 65px;
     width: 60px;
     height: 40px;

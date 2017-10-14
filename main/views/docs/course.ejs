@@ -228,19 +228,17 @@
             $scope.datalist = arr;
         })
         setTimeout(function(){
+            let flag = false;
             changeTitle();
             $(".btn").click(function(){
-                let flag = false;
-                return function(){
-                    console.log($("#main .sidebar"))
-                    if(flag){
-                        $("#main .sidebar").css("transform", 'translateX(0)');
-                        flag = !flag;
-                    }else{
-                        $("#main .sidebar").css("transform", 'translateX(-280px)');
-                        flag = !flag;
-                    }
-                }();
+                if(flag){
+                console.log($("#main .sidebar"))
+                    $("#main .sidebar").css("transform", 'translateX(-280px)');
+                    flag = !flag;
+                }else{
+                    $("#main .sidebar").css("transform", 'translateX(0)');                      
+                    flag = !flag;
+                }
             })
         },500)
         

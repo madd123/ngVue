@@ -465,108 +465,102 @@
 
     <%- include("./index-bottom.ejs") %>
 
-        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
-        <script src="https://cdn.bootcss.com/angular.js/1.4.0/angular.min.js"></script>
-        <script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-        <script src="http://demo.cssmoban.com/cssthemes4/sbtp_68_unika/inc/owl-carousel/js/owl.carousel.min.js"></script>
-        <script src="http://demo.cssmoban.com/cssthemes4/sbtp_68_unika/inc/isotope.pkgd.min.js"></script>
-        <script src="https://cdn.bootcss.com/stellar.js/0.6.2/jquery.stellar.min.js"></script>
-        <script src="../javascripts/lm/nav-common.js"></script>
-        <script src="../javascripts/index/jquery.running.min.js"></script>
-        <script>
-            // 背景视差滚动启动
-            $.stellar();
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.4.0/angular.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <script src="http://demo.cssmoban.com/cssthemes4/sbtp_68_unika/inc/owl-carousel/js/owl.carousel.min.js"></script>
+    <script src="http://demo.cssmoban.com/cssthemes4/sbtp_68_unika/inc/isotope.pkgd.min.js"></script>
+    <script src="https://cdn.bootcss.com/stellar.js/0.6.2/jquery.stellar.min.js"></script>
+    <script src="../javascripts/lm/nav-common.js"></script>
+    <script src="../javascripts/index/jquery.running.min.js"></script>
+    <script>
+        // 背景视差滚动启动
+        $.stellar();
 
-            // wow运动初始化
-            new WOW().init()
+        // wow运动初始化
+        new WOW().init()
 
-            //页面滚动数字递增启动
-            $("body").running();
+        //页面滚动数字递增启动
+        $("body").running();
 
-            // Intro text carousel
-            $("#owl-intro-text").owlCarousel({
-                singleItem: true,
-                autoPlay: 6000,
-                stopOnHover: true,
-                navigation: false,
-                navigationText: false,
-                pagination: true
-            })
+        // Intro text carousel
+        $("#owl-intro-text").owlCarousel({
+            singleItem: true,
+            autoPlay: 6000,
+            stopOnHover: true,
+            navigation: false,
+            navigationText: false,
+            pagination: true
+        })
 
+        // Partner carousel
+        $("#owl-partners").owlCarousel({
+            items: 4,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [980, 2],
+            itemsTablet: [768, 2],
+            autoPlay: 3000,
+            stopOnHover: true,
+            pagination: false
+        })
 
-            // Partner carousel
-            $("#owl-partners").owlCarousel({
-                items: 4,
-                itemsDesktop: [1199, 3],
-                itemsDesktopSmall: [980, 2],
-                itemsTablet: [768, 2],
-                autoPlay: 3000,
-                stopOnHover: true,
-                pagination: false
-            })
+        // Testimonials carousel
+        $("#owl-testimonial").owlCarousel({
+            singleItem: true,
+            pagination: true,
+            autoHeight: true
+        })
 
-            // Testimonials carousel
-            $("#owl-testimonial").owlCarousel({
-                singleItem: true,
-                pagination: true,
-                autoHeight: true
-            })
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // Isotop Package
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
+        $('.portfolio_menu ul li').click(function () {
+            $('.portfolio_menu ul li').removeClass('active_prot_menu');
+            $(this).addClass('active_prot_menu');
 
-
-            ////////////////////////////////////////////////////////////////////////////////////////////
-            // Isotop Package
-            ////////////////////////////////////////////////////////////////////////////////////////////
-
-            $('.portfolio_menu ul li').click(function () {
-                $('.portfolio_menu ul li').removeClass('active_prot_menu');
-                $(this).addClass('active_prot_menu');
-
+        });
+        $(".portfolio_menu ul li a").click(function () {
+            $(".portfolio_menu ul li a").css({
+                "background": "#fff",
+                "color": "#363940 !important"
             });
-            $(".portfolio_menu ul li a").click(function () {
-                $(".portfolio_menu ul li a").css({
-                    "background": "#fff",
-                    "color": "#363940 !important"
-                });
-                $(this).css({
-                    "background": "#363940",
-                    "color": "#fff !important"
-                });
+            $(this).css({
+                "background": "#363940",
+                "color": "#fff !important"
+            });
 
-            })
-            // $(".portfolio_menu ul li a").onblur(function(){
-            //     $(this).css("color","#fff !important");
-            // })
+        })
 
-            var $container = $('#portfolio');
+        var $container = $('#portfolio');
+        $container.isotope({
+            itemSelector: '.col-sm-4',
+            layoutMode: 'fitRows'
+        });
+        $('#filters').on('click', 'a', function () {
+            var filterValue = $(this).attr('data-filter');
             $container.isotope({
-                itemSelector: '.col-sm-4',
-                layoutMode: 'fitRows'
+                filter: filterValue
             });
-            $('#filters').on('click', 'a', function () {
-                var filterValue = $(this).attr('data-filter');
-                $container.isotope({
-                    filter: filterValue
-                });
-                return false;
-            });
+            return false;
+        });
 
 
-            // 回到顶部
-            $(window).scroll(function(){
-                if($(window).scrollTop()>"500"){
-                    $("#scrolltotop").show();
-                }else{
-                    $("#scrolltotop").hide();
-                }
-            })
+        // 回到顶部
+        $(window).scroll(function(){
+            if($(window).scrollTop()>"500"){
+                $("#scrolltotop").show();
+            }else{
+                $("#scrolltotop").hide();
+            }
+        })
 
-            $("#scrolltotop").click(function(){
-                console.log($(this));
-                $("body,html").animate({scrollTop:0},1000);
-            })
-        </script>
+        $("#scrolltotop").click(function(){
+            console.log($(this));
+            $("body,html").animate({scrollTop:0},1000);
+        })
+    </script>
 </body>
 
 </html>
