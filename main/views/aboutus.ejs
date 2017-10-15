@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,15 @@
     <link rel="stylesheet" href="../stylesheets/ycStyle/about.css">
 
 </head>
+
 <body>
+    <header>
+        <div class="headerinner">
+            <img src="../images/lm/logo.png" alt="" class="vueLogo">
+            <h1>渐进式
+                <br />JavaScript 框架</h1>
+        </div>
+    </header>
     <div class="carrousel">
         <div class="slide">
             <h2>Hellow,I'm Vue</h2>
@@ -48,68 +57,176 @@
             <p>Vue.js 的社区正在急速增长中，如果你正在阅读本文，这是你准备好加入 Vue.js 社区的大好机会。欢迎！</p>
         </div>
     </div>
-    
+
     <div class="timeAxis">
-        <div class="axis">
-            <div class="progress"></div>
-            <a></a>
+        <div class="progress">
+            <a class="point"></a>
         </div>
         <div class="controller">
-            <a href="#" id="up" class="arrow"><i class="fa fa-caret-up"></i></a>
-            <a href="#" id="down" class="arrow"><i class="fa fa-caret-down"></i></a>
-            <a href="#" id="left" class="arrow"><i class="fa fa-caret-left"></i></a>
-            <a href="#" id="right" class="arrow"><i class="fa fa-caret-right"></i></a>
+            <a href="#" id="up" class="arrow">
+                <i class="fa fa-caret-up"></i>
+            </a>
+            <a href="#" id="down" class="arrow">
+                <i class="fa fa-caret-down"></i>
+            </a>
+            <a href="#" id="left" class="arrow">
+                <i class="fa fa-caret-left"></i>
+            </a>
+            <a href="#" id="right" class="arrow">
+                <i class="fa fa-caret-right"></i>
+            </a>
         </div>
 
     </div>
-    
 
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>    
+    <footer>
+        <div class="inner">
+            <h3>Patreon 赞助者</h3>
+            <br>
+            <a href="https://stdlib.com/" target="_blank">
+                <img src="../images/sponsor/stdlib.png">
+            </a>
+            <a href="https://deepstreamhub.com" target="_blank" style="width: 130px; top: 1px;">
+                <img src="../images/sponsor/deepstream.png" style="width: 130px;">
+            </a>
+            <a href="https://jsfiddle.net/" target="_blank">
+                <img src="../images/sponsor/jsfiddle.png">
+            </a>
+            <a href="https://laravel.com/" target="_blank">
+                <img src="../images/sponsor/laravel.png">
+            </a>
+            <a href="https://chaitin.cn" target="_blank" style="top: -1px;">
+                <img src="../images/sponsor/chaitin.png">
+            </a>
+            <a href="https://htmlburger.com" target="_blank">
+                <img src="../images/sponsor/htmlburger.png">
+            </a>
+            <a href="https://starter.someline.com/" target="_blank" style="top: -2px;">
+                <img src="../images/sponsor/someline.png">
+            </a>
+            <a href="http://monterail.com/" target="_blank">
+                <img src="../images/sponsor/monterail.png">
+            </a>
+            <a href="https://www.2mhost.com/" target="_blank" style="width: 90px;">
+                <img src="../images/sponsor/2mhost.png" style="width: 90px;">
+            </a>
+            <a href="https://vuejobs.com/?ref=vuejs" target="_blank" style="width: 80px; top: 4px;">
+                <img src="../images/sponsor/vuejobs.svg" style="width: 80px;">
+            </a>
+            <a href="https://leanpub.com/vuejs2" target="_blank">
+                <img src="../images/sponsor/tmvuejs2.png">
+            </a>
+            <a href="https://component.io" target="_blank" style="width: 120px; top: 1px;">
+                <img src="../images/sponsor/component_io.png" style="width: 120px;">
+            </a>
+            <a href="https://www.v2ex.com/t/379389" target="_blank" style="width: 100px;">
+                <img src="../images/sponsor/v2exer.png" style="width: 100px;">
+            </a>
+            <a href="https://www.xfive.co/" target="_blank" style="width: 65px;">
+                <img src="../images/sponsor/xfive.png" style="width: 65px;">
+            </a>
+            <a href="http://www.frontenddevelopermeetups.com/" target="_blank" style="width: 100px;">
+                <img src="../images/sponsor/frontend-meetups.png" style="width: 100px;">
+            </a>
+            <a href="https://onsen.io/vue/" target="_blank" style="width: 105px;">
+                <img src="../images/sponsor/onsen-ui.png" style="width: 105px;">
+            </a>
+            <a href="http://tooltwist.com/" target="_blank" style="width: 100px;">
+                <img src="../images/sponsor/tooltwist.png" style="width: 100px;">
+            </a>
+            <br>
+
+            <script>
+                window.addEventListener('load', function () {
+                    [].forEach.call(document.querySelectorAll('.open-collective-sponsors img'), function (img) {
+                        if (img.width === 1) {
+                            img.width = 0
+                            img.parentElement.style.margin = '0 -1px 0 0'
+                        }
+                    })
+                })
+            </script>
+
+        </div>
+    </footer>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script>
-        $(function(){
-            var idx =0;
+        $(function () {
+            let idx = 0,
+                flag = true;
             carrousel(idx);
-            $(document).keydown(function(e){
+            $(document).keydown(function (e) {
                 e = e || window.event;
-                // console.log(e.keyCode);
-                switch(e.keyCode){
+                switch (e.keyCode) {
                     case 37:
                         idx--;
-                        if(idx>8) idx = 0;
-                        if(idx<0) idx = 8;
+                        if (idx > 8) idx = 0;
+                        if (idx < 0) idx = 8;
                         carrousel(idx);
                         break;
-                    // case 38:
-                    //     break;                    
+                    case 38:
+                        $("header").slideToggle();
+                        $("footer").slideUp();
+                        $(".carrousel").css("top", "0");
+                        flag = true;
+                        break;
                     case 39:
                         idx++;
-                        if(idx>8) idx = 0;
-                        if(idx<0) idx = 8;
+                        if (idx > 8) idx = 0;
+                        if (idx < 0) idx = 8;
                         carrousel(idx);
                         break;
-                    // case 40:
-                    // break;
+                    case 40:
+                        $("footer").slideToggle();
+                        $("header").slideUp();
+                        if (flag) {
+                            $(".carrousel").css("top", "-30%");
+                            flag = !flag;
+                        } else {
+                            $(".carrousel").css("top", "0");
+                            flag = !flag;
+                        }
+                        break;
                 }
             })
-            $("#left").click(function(){
+            $("#left").click(function () {
                 idx--;
-                if(idx>8) idx = 0;
-                if(idx<0) idx = 8;
+                if (idx > 8) idx = 0;
+                if (idx < 0) idx = 8;
                 carrousel(idx);
             })
-            $("#right").click(function(){
+            $("#right").click(function () {
                 idx++;
-                if(idx>8) idx = 0;
-                if(idx<0) idx = 8;
+                if (idx > 8) idx = 0;
+                if (idx < 0) idx = 8;
                 carrousel(idx);
+            })
+            $("#up").click(function () {
+                $("header").slideToggle();
+                $("footer").slideUp();
+                $(".carrousel").css("top", "0");
+                flag = true;
+            })
+            $("#down").click(function () {
+                $("footer").slideToggle();
+                $("header").slideUp();
+                if (flag) {
+                    $(".carrousel").css("top", "-30%");
+                    flag = !flag;
+                } else {
+                    $(".carrousel").css("top", "0");
+                    flag = !flag;
+                }
             })
 
-            function carrousel(idx){
-                var slideArr = [idx-4,idx-3,idx-2,idx-1,idx,idx+1,idx+2,idx+3,idx+4];
-                for(i in slideArr){
-                    if(slideArr[i]>8) slideArr[i]-=9;
-                    if(slideArr[i]<0) slideArr[i]+=9;
-                    $(".slide").eq(slideArr[i]).addClass("order"+i).siblings().removeClass("order"+i);
+            function carrousel(idx) {
+                $(".point").css("left", idx * 11 + "%");
+                var slideArr = [idx - 4, idx - 3, idx - 2, idx - 1, idx, idx + 1, idx + 2, idx + 3, idx + 4];
+                for (i in slideArr) {
+                    if (slideArr[i] > 8) slideArr[i] -= 9;
+                    if (slideArr[i] < 0) slideArr[i] += 9;
+                    $(".slide").eq(slideArr[i]).addClass("order" + i).siblings().removeClass("order" + i);
                 }
             }
 
@@ -117,4 +234,5 @@
         })
     </script>
 </body>
+
 </html>
