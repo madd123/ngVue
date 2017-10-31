@@ -24,7 +24,7 @@ var user={
     msg:'这是用于导出的一个对象'
 };
 user.open=function (cb) {
-    mongoose.connect('mongodb://wph:123@wphkj.cn:27017/ngVue');
+    mongoose.connect('mongodb://wph:123@106.15.197.186:27017/ngVue');
     var db=mongoose.connection;
     db.on('error',console.error.bind(console,'connection error 连接错误:'));
     //TODO: 这里一个问题，就是为什么用on,不用once的话，会叠加输出？
